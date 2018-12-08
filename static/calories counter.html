@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<title>Calorie Counter</title>
+<link rel="stylesheet" type="text/css" href="cal count.css">
+</head>
+<body>
+<div id='line1'></div>
+<hr id='line2'></hr>
+<p id='big'>Total Calories Consumed Today</p><br>
+<p id='calories'>0 Calories</p>
+<p id='column'>Your Daily Goal</p>
+<p id='column2'>______Cals</p>
+<p id='column3'>Your Recommended<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Goal</p>
+<p id='column4'>______Cals</p>
+<button onclick= updatecalories()><img src='plus.png'></img></button>
+<img id='img1' src='scales.png'></img>
+<img id='img2' src='scales.png'></img>
+<img id='img3' src='scales.png'></img>
+<input id='input1' type='number' min='0' max='10000' value='0'></input>
+<input id='input2' type='number' min='0' max='10000' value='0'></input>
+<input id='input3' type='number' min='0' max='10000' value='0'></input>
+</body>
+<script>
+/*calories counter*/
+function updatecalories(){
+var calo1 = document.getElementById('input1').value;
+var calo2 = document.getElementById('input2').value;
+var calo3 = document.getElementById('input3').value;
+var totalcalories = parseFloat(calo1)+parseFloat(calo2)+parseFloat(calo3)
+document.getElementById('calories').innerText = totalcalories + 'Calories';}
+</script>
+</html>

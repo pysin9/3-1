@@ -1,0 +1,88 @@
+body{background-image: url('../images/background1.jpeg');
+     margin: 0; 
+	 height: 100%; 
+	 overflow: hidden;
+	 width: 100%;
+	 color: #555555}
+
+p{margin: 3px;
+  color: #000033}
+
+#big{font-size: 65px;
+     top:0;}
+
+#calories{font-size: 60px;
+          left: 300px;
+		  position: absolute;
+		  top: 150px;}
+
+#line1{border-left: 3px solid;
+      height: 722px;
+      position: absolute;
+      left: 60%;
+      margin-left: -3px;
+	  bottom: 0;}
+	  
+#line2{width:613px;
+       
+       right:0;
+	   position: absolute;
+	   top: 350px;}
+	  
+#column{font-size: 65px;
+        position: absolute;
+        right:70px;
+		top:6px;}
+		
+#column2{font-size: 65px;
+        position: absolute;
+        right:150px;
+		top:150px;}
+		
+#column3{font-size: 65px;
+        position: absolute;
+        right:35px;
+		top:430px;}
+		
+#column4{font-size: 65px;
+        position: absolute;
+        right:150px;
+		top:600px;}
+
+button{width:127px;
+       height:133px;
+	   border-radius: 50%;
+	   position: absolute;
+	   left: 700px;
+	   top: 130px;
+	   background-color: #00b33c;}
+	   
+button img{width:140px;
+           height:140px;
+	       position:absolute;
+           top:-10px;
+		   left:-10px;}
+	   
+img{height: 250px;
+    width: 250px;
+	position:absolute;
+	top: 460px;
+    }
+
+#img1{left:645px;}
+
+#img2{left:340px;}
+	 
+#img3{left:30px;}
+
+input{position: absolute;
+      top: 400px;
+	  width: 200px;
+	  height: 40px;
+	  font-size: 50px;}
+
+#input1{left:55px;}
+
+#input2{left:365px;}
+
+#input3{left:665px;}
