@@ -5,12 +5,16 @@
        <title>Welcome To ColdRice!</title>
        <link href="/static/css/login.css" rel="stylesheet">
        <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+       {%  from "_formhelper.html" import render_field %}
    </head>
    <body>
      <div class = "blue">
         <div class = "container">
+            {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
            <div class = "login">
-               <form class = "form" method = "post" >
+               <form class = "form" method = "post"  >
                    <img src="/static/images/image3.jpg" alt ="avater">
                    <span class="form-title b">
                       Welcome to ColdRice!
@@ -19,20 +23,19 @@
                       Username
                    </span>
                   <div class="wrap-input100 validate-input m-b-36" >
-                       {{ render_field(form.id, class_='input100') }}
-
+                      {{ render_field(form.id, class_='input100') }}
                       <span class="focus-input100"></span>
                   </div>
                  <span class="txt1 blue">
                      Password
                  </span>
                  <div class="wrap-input100 validate-input m-b-12" >
-                     {{ render_field(form.password, class_='input100') }}
+                      {{ render_field(form.password, class_='input100') }}
                      <span class="focus-input100"></span>
                  </div>
                  <div class="strawberry short cake">
                      <div class="contact100-form-checkbox">
-                         {{ form.remember( class_= "input-checkbox100") }}
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
                          <label class="label-checkbox100" for="ckb1">
                              Remember me
                          </label>
@@ -42,9 +45,7 @@
                      Forgot Password?
                  </a>
                  <div class="container-login100-form-btn">
-                     <button type = "submit" class="login100-form-btn">
-                           {{ (form.id( class_='login100-form-btn') }}
-                     </button>
+                          {{ form.submit( class_= "login100-form-btn") }}
                  </div>
                  <div class="w-full text-center p-t-55">
                      <span class="txt2">

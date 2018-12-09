@@ -3,16 +3,16 @@ from wtforms import validators
 
 
 class LoginForm(Form):
-    name = StringField('UserName', [validators.DataRequired('Please enter your name.')])
-    password = PasswordField('Password', [validators.DataRequired('Please enter your password.')])
+    id = StringField([validators.DataRequired('Please enter your name.')])
+    password = PasswordField([validators.DataRequired('Please enter your password.')])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
 
 class RegisterForm(Form):
-    name = StringField('UserName', [validators.DataRequired('Please enter your name.')])
-    password = PasswordField('Password', [validators.DataRequired('Please enter your password.')])
-    town = StringField('Town', [validators.DataRequired("Please enter your location.")])
-    weight = IntegerField('Weight', [validators.DataRequired("Please enter your weight in kilogram")])
-    height = IntegerField('Height', [validators.DataRequired("Please enter your height in meters")])
+    id = StringField([validators.DataRequired('Please enter your name.')])
+    password = PasswordField([validators.DataRequired('Please enter your password.')])
+    town = StringField([validators.DataRequired("Please enter your location.")])
+    weight = IntegerField([validators.DataRequired("Please enter your weight in kilogram")])
+    height = IntegerField([validators.DataRequired("Please enter your height in meters")])
     submit = SubmitField('Register')
