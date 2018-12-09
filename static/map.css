@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+title {
+    color:red;
+}
+
+h1 {
+    width: 100%;
+    background-color:grey;
+    padding: 15px;
+    color: white;
+    margin-bottom: 30px;
+}
