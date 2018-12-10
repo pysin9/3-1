@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__, static_folder='images')
 
-APP_ROOT= os.path.dirname(os.path.abspath(__file__))
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 @app.route('/')
