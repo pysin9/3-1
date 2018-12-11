@@ -1,8 +1,8 @@
 class Calories:
     def __init__(self, calone = '0', caltwo = '0', calthree = '0'):
-        self.calone = ''
-        self.caltwo = ''
-        self.calthree = ''
+        self.calone = calone
+        self.caltwo = caltwo
+        self.calthree = calthree
 
     def get_calone(self):
         return self.calone
@@ -25,7 +25,3 @@ class Calories:
     def __str__(self):
         s = '{} calories'.format(int(self.get_calone())+int(self.get_caltwo())+int(self.get_calthree()))
         return s
-
-
-c = Calories('1', '2', '3')
-print(c)
