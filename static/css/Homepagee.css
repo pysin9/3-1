@@ -1,11 +1,18 @@
 #food{
 
-background-top: 200px;
-height: -200px;
-background-size: 1290px 420px ;
-background-repeat: no-repeat;
+    background-top: 200px;
+    height: 200px;
+    background-size: 1290px 420px ;
+    background-repeat: no-repeat;
 }
 
+.Dab {
+    right: 39px;
+    position: relative;
+    top: 9px;
+    height: 36px;
+    width: 53px;
+}
 
 
 input[type="submit"] {

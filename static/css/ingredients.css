@@ -1,6 +1,13 @@
 #ingre{
 background-repeat: no-repeat;
 }
+.bubble {
+    right: 34px;
+    position: relative;
+    top: 14px;
+    height: 41px;
+    width: 58px;
+}
 input[type="submit"] {
 	clear:both;
 	text-align: center;
@@ -38,9 +45,11 @@ div{
   font-size: 1rem;
   font-weight: 400;
  }
-.RM{
-	background-color: white;
-	opacity : 0.1;
+.RM {
+    background-color: white;
+    opacity: 0.9;
+    position: relative;
+    top: 63px;
 }
 a{
   color: #9c27b0;
