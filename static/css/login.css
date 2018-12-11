@@ -198,7 +198,7 @@ img {
     padding-left: 26px;
     cursor: pointer;
 }
-  
+
 .label-checkbox100::before {
     content: "\f00c";
     font-family: FontAwesome;
@@ -217,7 +217,7 @@ img {
     top: 50%;
     transform: translateY(-50%);
 }
-  
+
 .input-checkbox100:checked + .label-checkbox100::before {
     color:  #6675df;
 }
@@ -254,7 +254,7 @@ img {
     font-size: 13px;
     color:  #999999;
     line-height: 1.4;
-    right: 55px;
+    right: 48px;
 }
 .txt2 {
     font-size: 14px;
@@ -287,6 +287,7 @@ button {
     background-position: center;
     position: relative;
     z-index: 1;
+    background-image: url('../images/login3.jpg');
 }
 .more::before {
     content: "";
@@ -298,11 +299,17 @@ button {
     top: 0;
     left: 0;
     background: rgba(0,0,0,0.1);
-    background-image: url('../images/login3.jpg');
+
 }
 .back{
     position: relative;
     left: 225px;
     padding: 20px;
 }
-  
+
+input[type = checkbox] {
+    position: relative;
+}
+.fa-check:before {
+  content: "\f00c";
+}

@@ -20,7 +20,7 @@
 						Username
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-36" >
-						 <input class="input100" type="text" name="username" required>
+						 {{ form.id(class='input100') }}
 						 <span class="focus-input100"></span>
 					 </div>
 
@@ -28,34 +28,32 @@
 						Password
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 {{ render_field(form.id, class_='input100') }}
+						 {{ form.password(class='input100') }}
 						 <span class="focus-input100"></span>
 					 </div>
                      <span class="txt1 blue">
 						Town you live in
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 <input class="input100" type="text" name="Town you live in" required>
+						 {{ form.town (class='input100') }}
 						 <span class="focus-input100"></span>
 					 </div>
                      <span class="txt1 blue">
 						weight
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 <input class="input100" type="text" name="weight" required>
+						 {{ form.weight(class='input100') }}
 						 <span class="focus-input100"></span>
 					 </div>
                      <span class="txt1 blue">
 						height
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 <input class="input100" type="text" name="height" required>
+						 {{ form.height(class='input100') }}
 						 <span class="focus-input100"></span>
 					 </div>
                      <div class="container-login100-form-btn">
-						 <button href="#" type = "submit" class="login100-form-btn">
-							Sign Up
-						 </button>
+							{{ form.submit(class ="login100-form-btn") }}
 					 </div>
                   </form>
                   <div class = "more" >
