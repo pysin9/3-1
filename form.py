@@ -1,7 +1,7 @@
 from wtforms import StringField, SubmitField, Form, PasswordField, IntegerField, BooleanField
 from wtforms import validators
 from wtforms.validators import email, DataRequired
-
+from markupsafe import Markup
 
 class LoginForm(Form):
     id = StringField("Username", [validators.DataRequired('Please enter your name.')])
@@ -23,4 +23,9 @@ class ResetForm(Form):
     email = StringField("Email", validators=[DataRequired(), email()])
     submit = SubmitField("Send Email")
 
-
+class CalCount(Form):
+    one = IntegerField('Calorie1')
+    two = IntegerField('Calorie2')
+    three = IntegerField('Calorie3')
+    submitvalue = Markup('<span class="submit" title="submit"></span>')
+    submit = SubmitField(submitvalue)
