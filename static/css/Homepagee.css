@@ -15,11 +15,11 @@ background-size:1290px 420px
 }
 
 
-input[type="submit"] {
+#special{
 	clear:both;
 	text-align: center;
 	width:10%;
-	height:2.5em;
+	height:2em;
 	margin:auto;
 	border-radius:20px;
 	left: 550px;
@@ -28,6 +28,7 @@ input[type="submit"] {
 	color: white;
 	bottom: 250px;
 	font-size: 26px;
+    text-decoration:none;
 }
 html {
   font-family: sans-serif;
