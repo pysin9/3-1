@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
-<html>
-<head> 
-    <body >
-	<link rel="stylesheet" type="text/css" href="/static/css/ingredients.css"/>
+<html lang="en">
+<head>
+    <title>Ingredents</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/ingredients.css"/>
+</head>
+<body id="pic">
      <nav class="navbar navbar-default navbar-expand-lg" >
             <div class="container">
               <div class="navbar-translate">
@@ -16,39 +18,39 @@
               </div>
               <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a href="/Homepagee.html" class="nav-link">
-                      Food
-                    </a>
-                  </li>
+
                   <li class="nav-item">
                     <a href="" class="nav-link">
-                      recipe
+                      Recipe
                     </a>
                   </li>
 				  <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ url_for('calcount') }}" class="nav-link">
                       Calories Counter
                     </a>
                   </li>
 				  <li class="nav-item">
-                    <a href="" class="nav-link">
-                      Profile
+                    <a href="{{ url_for('map') }}" class="nav-link">
+                      Map
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link" data-toggle="dropdown">
-                      Map
+                    <a href="{{ url_for('userprofile') }}" class="nav-link" data-toggle="dropdown">
+                      Profile
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
-		</nav>
-	  </head>
-<body background="/static/images/newback.jpeg" id="ingre">
-<div class = "blue">
-<div class="RM">
+     </nav>
+     <div>
+        < img src = "/static/images/newback.jpeg" id = "ingre">
+     </div>
+     <div class = "blue"></div>
+     <div class="RM"></div>
+
+
+<div>
 1 tsp cumin seeds<br>
 1 tsp coriander seeds 
 1 tbsp olive oil <br>
@@ -70,7 +72,8 @@ Toast the cumin and coriander seeds in a large pan until they are fragrant and d
 Heat the oil in a pan and add the onions. Fry on a medium to high heat then put on the lid to sweat the onions. Grind the garlic and a sprinkle of sea salt in the pestle and mortar
 The onions should be browning. Give them a stir, and add a little water if they are sticking. Add the garlic and fry for 5 minutes, adding a splash of water if needed
 Add the aubergine, spices and wine. Allow the wine to reduce by half before adding the water, stock, lemon, olives and thyme. Simmer for 30 minutes, adding splashes of water if needed
-Serve with basmati rice, white or brown as you prefer.</div>
+Serve with basmati rice, white or brown as you prefer.
 </div>
+
 </body>
 </html>

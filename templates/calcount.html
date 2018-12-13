@@ -1,28 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Calorie Counter</title>
-<link rel="stylesheet" type="text/css" href='/static/css/cal count.css'>
+    <title>Calorie Counter</title>
+    <link rel="stylesheet" type="text/css" href='/static/css/cal count.css'>
     <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/static/css/ingredients.css"/>
 </head>
 
 <body>
-<div id='line1'></div>
-<hr id='line2'>
-<p id='big'>Total Calories Consumed Today</p><br>
-<p id='calories'>0 Calories</p>
-<p id='column'>Your Daily Goal</p>
-<p id='column2'>______Cals</p>
-<p id='column3'>Total Calories</p>
-<p id='column4'>{{c}}</p>
-<button onclick="updatecalories()"><span class="submit" title="submit"></span><img src='/static/images/plus.png' alt="add"></button>
-<img id='img1' src='/static/images/scales.png' alt="scale">
-<img id='img2' src='/static/images/scales.png' alt="scale">
-<img id='img3' src='/static/images/scales.png' alt="scale">
-<form action="" method="GET'">
-    <div class="input integer"> {{ form.one }} </div>
-    <div class="input integer"> {{ form.two }} </div>
-    <div class="input integer"> {{ form.three }} </div>
-</form>
+    <nav class="navbar navbar-default navbar-expand-lg" >
+            <div class="container">
+              <div class="navbar-translate">
+                <a class="navbar-brand" href="">MAKAN</a>
+                <img src="/static/images/image3.jpg" alt="avatar" class="bubble">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+
+                  <li class="nav-item">
+                    <a href="" class="nav-link">
+                      Recipe
+                    </a>
+                  </li>
+				  <li class="nav-item">
+                    <a href="{{ url_for('calcount') }}" class="nav-link">
+                      Calories Counter
+                    </a>
+                  </li>
+				  <li class="nav-item">
+                    <a href="{{ url_for('map') }}" class="nav-link">
+                      Map
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url_for('userprofile') }}" class="nav-link" data-toggle="dropdown">
+                      Profile
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+     </nav>
+    <div id='line1'></div>
+    <hr id='line2'>
+    <p id='big'>Total Calories Consumed Today</p><br>
+    <p id='calories'>0 Calories</p>
+    <p id='column'>Your Daily Goal</p>
+    <p id='column2'>______Cals</p>
+    <p id='column3'>Total Calories</p>
+    <p id='column4'>{{c}}</p>
+    <button onclick="updatecalories()"><span class="submit" title="submit"></span><img src='/static/images/plus.png' alt="add"></button>
+    <img id='img1' src='/static/images/scales.png' alt="scale">
+    <img id='img2' src='/static/images/scales.png' alt="scale">
+    <img id='img3' src='/static/images/scales.png' alt="scale">
+    <form action="" method="GET'">
+        <div class="input integer"> {{ form.one }} </div>
+        <div class="input integer"> {{ form.two }} </div>
+        <div class="input integer"> {{ form.three }} </div>
+    </form>
 </body>
 </html>

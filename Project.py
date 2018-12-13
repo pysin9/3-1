@@ -1,15 +1,14 @@
 from flask import *
 from dbModel import *
-from flask import Flask, render_template, flash, url_for, redirect, session
+from flask import Flask, render_template, flash, url_for, redirect, session, request
 from form import *
 from user import *
-from flask import request
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def map():
+def index():
     return render_template("Homepagee.html")
 
 
@@ -19,16 +18,16 @@ def ingredient():
 
 
 @app.route('/userprofile')
-def userprofiel():
+def userprofile():
     return render_template('userprofile.html')
 
 
 @app.route("/map")
-def index():
+def map():
     return render_template('map.html')
 
 
-app.route('/calcount', methods=['GET'])
+@app.route('/calcount', methods=['GET'])
 def calcount():
     form = CalCount(request.form)
     #cal1 = form.calone
@@ -38,9 +37,7 @@ def calcount():
     return render_template('calcount.html',form=form)
 
 
-SECRET_KEY = "yeah, not actually a secret"
-DEBUG = True
-app.config['SESSION_TYPE'] = 'filesystem'
+
 
 
 @app.route("/login", methods=['GET', 'POST'])
