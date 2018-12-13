@@ -5,16 +5,13 @@ width: 100%;
 background-position: center;
 background-image: url(background.jpg);
 }
-
 .Dab {
-    right: 39px;
-    position: relative;
-    top: 9px;
-    height: 36px;
-    width: 53px;
+	right: 39px;
+	position: relative;
+	top : 9px;
+	height: 36px;
+	width: 53px;
 }
-
-
 input[type="submit"] {
 	clear:both;
 	text-align: center;
@@ -26,7 +23,7 @@ input[type="submit"] {
 	position: absolute;
 	background-color: grey;
 	color: white;
-	bottom: 250px;
+	bottom: 211px;
 	font-size: 26px;
 }
 html {
