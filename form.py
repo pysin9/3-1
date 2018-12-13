@@ -27,5 +27,4 @@ class CalCount(Form):
     one = IntegerField('Calorie1')
     two = IntegerField('Calorie2')
     three = IntegerField('Calorie3')
-    submitvalue = Markup('<span class="submit" title="submit"></span>')
-    submit = SubmitField(submitvalue)
+    submit = SubmitField('Submit')
