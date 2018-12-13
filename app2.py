@@ -1,4 +1,4 @@
-from flask import Flask, render_template,
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -12,5 +12,8 @@ def index():
 def ingredient():
     return render_template('ingredients.html')
 
+@app.route('/userprofile')
+def userprofiel():
+    return render_template('userprofile.html')
 if __name__ == '__main__':
     app.run()
