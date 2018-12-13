@@ -1,5 +1,5 @@
 class Calories:
-    def __init__(self, calone = '0', caltwo = '0', calthree = '0'):
+    def __init__(self, calone  , caltwo , calthree  ):
         self.calone = calone
         self.caltwo = caltwo
         self.calthree = calthree
