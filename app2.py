@@ -12,5 +12,8 @@ def index():
 def ingredient():
     return render_template('ingredients.html')
 
+@app.route('/userprofile')
+def userprofiel():
+    return render_template('userprofile.html')
 if __name__ == '__main__':
     app.run()
