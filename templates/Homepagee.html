@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/static/css/Homepagee.css"/>
-    <title>Ingredients</title>
+    <title>Homepage</title>
 	
 </head>
 
@@ -11,7 +11,7 @@
      <nav class="navbar navbar-default navbar-expand-lg" >
             <div class="container">
               <div class="navbar-translate">
-                <a class="navbar-brand" href="{{ url_for('index') }}">MAKAN</a>
+                <a class="navbar-brand" href="/">MAKAN</a>
                 <img src="/static/images/image3.jpg" alt="avatar" height="42" width="42" class="Dab">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -22,12 +22,12 @@
               <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
 				  <li class="nav-item">
-                    <a href="{{ url_for('login') }}" class="nav-link">
+                    <a href="/login" class="nav-link">
                       Login
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ url_for('register') }}" class="nav-link" >
+                    <a href="/register" class="nav-link" >
                       Signup
                     </a>
                   </li>
@@ -37,7 +37,7 @@
      </nav>
      <div>
          <img src = "/static/images/background.jpg" id = "food">
-         <a href="{{ url_for('map') }}" id="special">Map</a>
+         <a href="/map" id="special">Map</a>
 
      </div>
       </body>
