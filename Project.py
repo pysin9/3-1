@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
 @app.route("/api", methods=['POST'])
 def api():
-    db_data = MapPets.query.all()
+    db_data = MapPlace.query.all()
     infornation_dic = {}
     infornation_list = []
     for data in db_data:
@@ -93,6 +93,8 @@ def api():
         infornation_dic['Color'] = data.Color
         infornation_dic['Longitude'] = data.Longitude
         infornation_dic['Latitude'] = data.Latitude
+        infornation_dic['Location'] = data.Location
+        infornation_dic['Category'] = data.Category
         infornation_list.append(infornation_dic)
         infornation_dic = {}
 

@@ -33,6 +33,7 @@ $.ajax({
     success: function (map_data) {
         for (var i = 0; i < map_data.length; i++) {
             var title = map_data[i].Name;
+            var location = map_data[i].Location;
             var selfIcon = L.divIcon({
                 className: 'my-div-icon',
                 iconSize: [50, 50],
@@ -48,7 +49,7 @@ $.ajax({
                 this.bounce(2);
             }).addTo(markers);
 
-            var content = title + "</br>" + "Latitude:" + map_data[i].Latitude + "</br>" + "Longitude:" + map_data[i].Longitude;
+            var content = title + "</br>" + "Location:" + map_data[i].Location + "</br>" +"Latitude:" + map_data[i].Latitude + "</br>" + "Longitude:" + map_data[i].Longitude;
             marker.bindPopup(content, {
                 maxWidth: 600
             });
@@ -98,3 +99,45 @@ var loadingControl = L.Control.loading({
     zoomControl: zoomControl
 });
 map.addControl(loadingControl);
+
+function getColor(d) {
+        return d === 'Spicy'  ? "#de2d26" :
+               d === 'Vegertarian'  ? "#377eb8" :
+               d === 'Halal' ? "#4daf4a" :
+               d === 'Elder friendly' ? "#984ea3" :
+               d === 'Desert' ? "#fc8d59":
+                   "#ffffff";
+
+    }
+
+    function style(feature) {
+        return {
+            weight: 1.5,
+            opacity: 1,
+            fillOpacity: 1,
+            radius: 6,
+            fillColor: getColor(feature.properties.TypeOfIssue),
+            color: "grey"
+
+        };
+    }
+
+var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend');
+    labels = ['<strong>Legend</strong>'],
+    categories = ['Spicy','Vegertarian','Halal','Elder friendly','Desert','Others'];
+
+    for (var i = 0; i < categories.length; i++) {
+
+            div.innerHTML +=
+            labels.push(
+                '<i class="circle" style="background:' + getColor(categories[i]) + '"></i> ' +
+            (categories[i] ? categories[i] : '+'));
+
+        }
+        div.innerHTML = labels.join('<br>');
+    return div;
+    };
+    legend.addTo(map);

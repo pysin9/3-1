@@ -3,8 +3,7 @@ import random
 
 name = ["派派", "阿肥", "咪咪", "妞妞", "胖胖"
     , "大頭", "阿寶", "皮皮", "嘟嘟", "妮妮"
-    , "樂樂", "毛毛", "粉圓", "飯糰", "圓圓"
-    , "肥肥", "布丁", "妹妹", "小黑", "旺財", "test"]
+    ]
 
 picture = ["http://imgur.com/yI00Ehb.jpg",
            "http://i.imgur.com/TtmYVK2.jpg",
@@ -20,21 +19,41 @@ picture = ["http://imgur.com/yI00Ehb.jpg",
 
 color = ["#E44040", "#EC21C7", "#8C4C80", "#A41FEC", "#B99ADA"
     , "#4E15E9", "#154EE9", "#4B9CF8", "#65BCD8", "#13EFE4"
-    , "#13EFA2", "#13EF63", "#3E7753", "#8DBE1A", "#D6E6AE"
-    , "#E8F669", "#949478", "#E4B92C", "#E98915", "#F2802E"]
+   ]
+
+location = ["AMK","AMK","AMK","AMK","AMK",
+    "AMK","AMK","AMK","AMK","AMK",
+
+                                                         ]
+
+category = [
+
+                                                        ]
 
 if __name__ == '__main__':
     print('Start Generator Data......')
-    for index in range(1, 201):
-        index_name = random.randint(0, len(name) - 1)
-        index_pic = random.randint(0, len(picture) - 1)
-        index_color = random.randint(0, len(color) - 1)
-        insert_data = MapPets(
-            Name=name[index_name] + str(index),
-            Picture=picture[index_pic],
-            Color=color[index_color],
+    for colors in color:
+        if colors == "#8C4C80":
+            index_category = "Healthy"
+            category.append(index_category)
+        else:
+            index_category = None
+            category.append(index_category)
+
+    for index in range(len(name and picture and color and location and category)):
+        index_name = name[index]
+        index_picture = picture[index]
+        index_color = color[index]
+        index_location = location[index]
+        index_category = category[index]
+        insert_data = MapPlace(
+            Name=index_name ,
+            Picture=index_picture,
+            Color=index_color,
             Longitude=random.uniform(120.47, 121.4),
             Latitude=random.uniform(22.5, 25),
+            Location=index_location,
+            Category=index_category,
         )
         db.session.add(insert_data)
     db.session.commit()
