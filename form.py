@@ -24,7 +24,23 @@ class ResetForm(Form):
     submit = SubmitField("Send Email")
 
 class CalCount(Form):
-    one = IntegerField('Calorie1')
-    two = IntegerField('Calorie2')
-    three = IntegerField('Calorie3')
-    submit = SubmitField('Submit')
+    one = IntegerField('Calorie1', validators=[NumberRange(min=0)])
+    two = IntegerField('Calorie2', validators=[NumberRange(min=0)])
+    three = IntegerField('Calorie3', validators=[NumberRange(min=0)])
+    submit = SubmitField('submit')
+
+
+class UpdateProfile(Form):
+    id = StringField("Username")
+    town = StringField("Town")
+    weight = IntegerField("Weight", validators=[NumberRange(min=0)])
+    height = IntegerField("Height", validators=[NumberRange(min=0)])
+    submit = SubmitField('submit')
+
+
+class Password(Form):
+    password = PasswordField('New Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Re-enter Password')
+
