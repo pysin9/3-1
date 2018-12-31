@@ -23,8 +23,10 @@
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a new photo</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div></hr><br>
+          <form method="post" enctype="multipart/form-data">
+              <input type="file" class="text-center center-block file-upload" value="upload">
+          </form>
+      </div><hr><br>
 
         </div><!--/col-3-->
     	<div class="col-sm-9">
@@ -56,7 +58,7 @@
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="height"><h4>Height (m):</h4></label>
-                              <input type="number" class="form-control" name="height" id="height" placeholder="height" title="enter height">
+                              <input type="number" class="form-control" name="height" id="height" value='0' title="enter height">
                           </div>
                       </div>
                       <div class="form-group">
@@ -64,13 +66,13 @@
                       <div class="form-group">
                           <div class="col-xs-6">
                               <label for="weight"><h4>Weight (kg):</h4></label>
-                              <input type="number" class="form-control" name="weight" id="weight" placeholder="weight" title="enter weight">
+                              <input type="number" class="form-control" name="weight" id="weight" value='0' title="enter weight">
                           </div>
                       </div>
 
                           <div class="col-xs-6">
                               <label for="bmi"><h4>Bmi:</h4></label>
-                              <input type="number" class="form-control" name="bmi" id="bmi" placeholder="bmi" title="bmi" disabled>
+                              <input type="number" class="form-control" name="bmi" id="bmi" placeholder={{bmi}} title="bmi" disabled>
                           </div>
                       </div>
 
