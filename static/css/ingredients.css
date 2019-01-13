@@ -42,14 +42,21 @@ div{
 }
 .RM {
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
+    font-size: 1rem;
+    font-weight: 400;
  }
 .RM {
     background-color: white;
     opacity: 0.9;
     position: relative;
     top: 63px;
+    width: 92%;
+    left: 30px;
+}
+.BT{
+    position: relative;
+    left: 30px;
+    top: 3px;
 }
 a{
   color: #9c27b0;
@@ -117,7 +124,7 @@ a:not([href]):not([tabindex]):focus {
 	font-size: 24px;
 	transition: 3s;
 	color: #555;
-	
+
 }
 .navbar .navbar-nav{
 	list-style: none;
@@ -196,7 +203,7 @@ a:not([href]):not([tabindex]):focus {
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .navbar-toggler:not(:disabled):not(.disabled) {
@@ -247,7 +254,7 @@ a:not([href]):not([tabindex]):focus {
 .home{
 	height: 10%;
 	width: 100%;
-} 
+}
 .main-raised {
     margin: -60px 30px 0px;
     border-radius: 6px;

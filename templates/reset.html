@@ -5,11 +5,20 @@
        <title>Reset Password!</title>
        <link href="/static/css/reset.css" rel="stylesheet">
        <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+       <script src="/static/js/changePassword.js"></script>
    </head>
     <body>
-        
         <div class="limiter">
             <div class="container-login100">
+                 {% with messages = get_flashed_messages(with_categories=true) %}
+                   {% if messages %}
+                       {% for category, message in messages %}
+                         <div class="alert alert-{{ category }}">
+                            {{ message }}
+                         </div>
+                       {% end for %}
+                  {% endif %}
+                {% end with %}
                 <div class="wrap-login100">
                     <div class="login100-form-title">
                         <span class="login100-form-title-1">
@@ -17,22 +26,27 @@
                         </span>
                     </div>
 
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" action="/reset" onsubmit="return validate()" method="POST">
                         <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-                            <span class="label-input100">Email</span>
-                            <input class="input100" type="text" name="username" placeholder="Enter username">
+                            <span class="label-input100">Old Password</span>
+                            <input class="input100" type="text" name="username" placeholder="Enter old password">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-                            <span class="label-input100">Password</span>
-                            <input class="input100" type="password" name="pass" placeholder="Enter password">
+                            <span class="label-input100">New Password</span>
+                            <input class="input100" type="password" name="pass" placeholder="Enter new password" id="newpassword">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                            <span class="label-input100">Confirm Password</span>
+                            <input class="input100" type="password" name="pass" placeholder="Confirm password" id="cpassword">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn">
-                                Send Email
+                                Save
                             </button>
                         </div>
                     </form>

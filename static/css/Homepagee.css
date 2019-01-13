@@ -1,9 +1,10 @@
 #food{
 background-repeat: no-repeat;
-height: 400px;
-width: 100%;
-background-position: center;
-background-size:1290px 420px
+background-size: cover;
+background-position: 50% 50%;
+width: 1536px;
+height: 516px;
+object-fit: cover;
 }
 
 .Dab {
@@ -22,7 +23,7 @@ background-size:1290px 420px
 	height:2em;
 	margin:auto;
 	border-radius:20px;
-	left: 550px;
+	left: 710px;
 	position: absolute;
 	background-color: grey;
 	color: white;
@@ -155,7 +156,7 @@ body {
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .navbar-toggler:not(:disabled):not(.disabled) {
@@ -206,7 +207,7 @@ body {
 .home{
 	height: 10%;
 	width: 100%;
-} 
+}
 .main-raised {
     margin: -60px 30px 0px;
     border-radius: 6px;
@@ -329,7 +330,7 @@ h4{
 	color: #999;
 	font-weight: normal;
 	margin: 0;
-	
+
 }
 .icon.icon-chat {
     color: #00bcd4;
