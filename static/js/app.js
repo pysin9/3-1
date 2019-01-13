@@ -157,7 +157,7 @@ $.ajax({
         // map.addLayer(markers);
         //mini map
         lc = L.control.locate({
-            position: 'topright',
+            position: 'topleft',
             strings: {
                 title: "Show me where I am, yo!",
                 popup: "You are here"
