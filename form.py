@@ -1,30 +1,45 @@
-from wtforms import StringField, SubmitField, Form, PasswordField, IntegerField, BooleanField
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
 from wtforms import validators
-from wtforms.validators import email, DataRequired
+from wtforms.validators import DataRequired, Length, NumberRange
 from markupsafe import Markup
 
-class LoginForm(Form):
-    id = StringField("Username", [validators.DataRequired('Please enter your name.')])
-    password = PasswordField("Password", [validators.DataRequired('Please enter your password.')])
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    password = PasswordField('Password', validators=[DataRequired()])
+
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
 
-class RegisterForm(Form):
-    id = StringField("Username", [validators.DataRequired('Please enter your name.')])
-    password = PasswordField("Password", [validators.DataRequired('Please enter your password.')])
-    town = StringField("Town", [validators.DataRequired("Please enter your location.")])
-    weight = IntegerField("Weight", [validators.DataRequired("Please enter your weight in kilogram")])
-    height = IntegerField("Height", [validators.DataRequired("Please enter your height in meters")])
+class RegisterForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    password = PasswordField('Password', validators=[DataRequired()])
+    town = StringField("Town", validators=[DataRequired()])
+    weight = IntegerField('Weight', validators=[DataRequired(), Length(min=2, max=20)])
+    height = IntegerField('Height', validators=[DataRequired()])
     submit = SubmitField('Register')
 
 
-class ResetForm(Form):
-    email = StringField("Email", validators=[DataRequired(), email()])
-    submit = SubmitField("Send Email")
+class CalCount(FlaskForm):
+    one = IntegerField('Calorie1', validators=[NumberRange(min=0)])
+    two = IntegerField('Calorie2', validators=[NumberRange(min=0)])
+    three = IntegerField('Calorie3', validators=[NumberRange(min=0)])
+    submit = SubmitField('submit')
 
-class CalCount(Form):
-    one = IntegerField('Calorie1')
-    two = IntegerField('Calorie2')
-    three = IntegerField('Calorie3')
-    submit = SubmitField('Submit')
+
+class UpdateProfile(FlaskForm):
+    id = StringField("Username")
+    town = StringField("Town")
+    weight = IntegerField("Weight", validators=[NumberRange(min=0)])
+    height = IntegerField("Height", validators=[NumberRange(min=0)])
+    submit = SubmitField('submit')
+
+
+class Password(FlaskForm):
+    password = PasswordField('New Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Re-enter Password')
+

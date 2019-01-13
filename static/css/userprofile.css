@@ -1,9 +1,10 @@
 #food{
 background-repeat: no-repeat;
-height: 400px;
-width: 100%;
-background-position: center;
-background-image: url(background.jpg);
+background-size: cover;
+background-position: 50% 50%;
+width: 1536px;
+height: 516px;
+object-fit: cover;
 }
 .Dab {
 	right: 39px;
@@ -11,6 +12,21 @@ background-image: url(background.jpg);
 	top : 9px;
 	height: 36px;
 	width: 53px;
+}
+#special{
+	clear:both;
+	text-align: center;
+	width:10%;
+	height:2em;
+	margin:auto;
+	border-radius:20px;
+	left: 710px;
+	position: absolute;
+	background-color: grey;
+	color: white;
+	bottom: 250px;
+	font-size: 26px;
+    text-decoration:none;
 }
 input[type="submit"] {
 	clear:both;
@@ -56,7 +72,7 @@ body {
   margin-bottom: 20px;
   color: #555;
   background-color: #fff !important;
-  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
 }
 .navbar>.container{
   display: flex;
@@ -77,8 +93,8 @@ body {
 .navbar .navbar-nav{
 	list-style: none;
 	float: right;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	display: flex;
 }
 .navbar .navbar-nav .nav-item{
@@ -94,7 +110,6 @@ body {
 }
 .navbar .navbar-nav .nav-item .btn{
 	line-height: 80px;
-	color: #555;
 	padding: 12px 30px ;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -151,7 +166,7 @@ body {
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .navbar-toggler:not(:disabled):not(.disabled) {
@@ -189,7 +204,7 @@ body {
     flex-wrap: nowrap;
 }
 .navbar-expand-lg .navbar-collapse {
-    display: flex !important;
+    display: flex ;
     flex-basis: auto;
 }
 .navbar-expand-lg .navbar-toggler {
@@ -202,7 +217,7 @@ body {
 .home{
 	height: 10%;
 	width: 100%;
-} 
+}
 .main-raised {
     margin: -60px 30px 0px;
     border-radius: 6px;
@@ -220,137 +235,4 @@ body {
     margin-right: auto;
     margin-left: auto;
 	max-width: 720px;
-}
-.section {
-    padding: 70px 0;
-	text-align: center !important;
-}
-.title {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-.center{
-	margin-left: auto !important;
-	margin-right: auto !important;
-	flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-	position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-h1{
-	margin-bottom: 1rem;
-	color: #3C4858;
-    text-decoration: none;
-	font-weight: 700;
-    font-family: "Roboto Slab", "Times New Roman", sans-serif, "Helvetica";
-    font-size: 2.25rem;
-    line-height: 1.5em;
-}
-
-.description {
-    color: #999;
-	font-size: 1.0625rem;
-    line-height: 1.55em;
-    margin-bottom: 15px;
-	margin-top: 10px;
-	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 300;
-}
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-.blue {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-	position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-	color: #999;
-}
-.icon.icon-calendar {
-    color: #40bf40;
-}
-.info {
-    max-width: 360px;
-    margin: 0 auto;
-    padding: 70px 0 30px;
-}
-.info .icon>i {
-    font-size: 3.85rem;
-}
-.fa-calendar {
-    font-family: "Roboto Slab", "Times New Roman", serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-}
-.info .info-title {
-    color: #3C4858;
-    margin: 1.75rem 0 0.875rem;
-}
-.info-title{
-	text-decoration: none;
-    font-family: "Roboto Slab", "Times New Roman", serif;
-}
-h3 {
-	font-size: 1.125rem;
-    line-height: 1.5em;
-	color: #999;
-	font-weight: normal;
-}
-.icon.icon-statistics {
-    color: #ff8533;
-}
-h4{
-	font-size: 1.125rem;
-    line-height: 1.5em;
-	color: #999;
-	font-weight: normal;
-	margin: 0;
-	
-}
-.icon.icon-chat {
-    color: #00bcd4;
-}
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-}
-h5{
-	font-size: 1.125rem;
-    line-height: 1.5em;
-	color: #999;
-	font-weight: normal;
-	margin: 0;
-}
-p{
-	color: #999;
-	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }

@@ -28,19 +28,6 @@ def map():
     return render_template('map.html', data=data )
 
 
-@app.route('/calcount', methods=['GET'])
-def calcount():
-    form = CalCount(request.form)
-    #cal1 = form.calone
-    #cal2 = form.caltwo
-    #cal3 = form.calthree
-    #c = Calories(cal1, cal2, cal3)
-    return render_template('calcount.html',form=form)
-
-
-
-
-
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     login_form = LoginForm(request.form)

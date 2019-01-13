@@ -46,18 +46,10 @@ p{margin: 3px;
 		
 #column4{font-size: 65px;
         position: absolute;
-        right:150px;
+        right:200px;
 		top:600px;}
-
-button{width:127px;
-       height:133px;
-	   border-radius: 50%;
-	   position: absolute;
-	   left: 700px;
-	   top: 130px;
-	   background-color: #00b33c;}
 	   
-button img{width:140px;
+#image{width:140px;
            height:140px;
 	       position:absolute;
            top:-10px;
@@ -68,6 +60,20 @@ img{height: 250px;
 	position:absolute;
 	top: 460px;
     }
+
+input[type=submit]{position:absolute;
+    width:127px;
+    height:133px;
+    border-radius: 50%;
+    left: 700px;
+    top: 130px;
+    background-color: #00b33c;}
+
+#image{width:140px;
+     height:140px;
+     position:absolute;
+     top:-10px;
+     left:-10px;}
 
 #img1{left:645px;}
 
@@ -86,3 +92,4 @@ input{position: absolute;
 #input2{left:365px;}
 
 #input3{left:665px;}
+

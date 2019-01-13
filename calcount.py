@@ -23,5 +23,5 @@ class Calories:
         self.calthree = calthree
 
     def __str__(self):
-        s = '{} calories'.format(int(self.get_calone())+int(self.get_caltwo())+int(self.get_calthree()))
+        s = '{}'.format(int(self.get_calone())+int(self.get_caltwo())+int(self.get_calthree()))
         return s

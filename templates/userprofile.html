@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="userprofile.css"/>
-	
+	<link rel="stylesheet" type="text/css" href="/static/css/userprofile.css"/>
+
 </head>
 
 <body>
      <nav class="navbar navbar-default navbar-expand-lg" role="navigation-demo">
             <div class="container">
               <div class="navbar-translate">
-                <a class="navbar-brand" href="/">MAKAN</a>
-				<img src="icon.jpeg" alt="avatar" class="Dab">
+                <a class="navbar-brand" href="/index">MAKAN</a>
+				<img src="/static/images/image3.jpg" alt="avatar" class="Dab">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                   <span class="navbar-toggler-icon"></span>
@@ -20,12 +20,12 @@
               <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
 				  <li class="nav-item">
-                    <a href="" class="nav-link">
-                      UserName
+                    <a class="nav-link">
+                      Profile
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link" data-toggle="dropdown">
+                    <a href="/logout" class="nav-link" data-toggle="dropdown">
                       Log out
                     </a>
                   </li>
@@ -35,7 +35,7 @@
          </nav>
      <div>
          <img src = "/static/images/background.jpg" id = "food">
-         <input type="submit" value="Map"></input>
+         <a href ="/map" id="special">Map</a>
      </div>
       </body>
 </html>
