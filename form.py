@@ -1,6 +1,6 @@
 from wtforms import StringField, SubmitField, Form, PasswordField, IntegerField, BooleanField
 from wtforms import validators
-from wtforms.validators import email, DataRequired
+from wtforms.validators import email, DataRequired, NumberRange
 from markupsafe import Markup
 
 class LoginForm(Form):
