@@ -13,6 +13,7 @@ class MapPlace(db.Model):
                  , Latitude
                  , Location
                  , Category
+                 , Postal_Code
 
                  ):
         self.Name = Name
@@ -22,9 +23,12 @@ class MapPlace(db.Model):
         self.Latitude = Latitude
         self.Location = Location
         self.Category = Category
+        self.Postal_Code = Postal_Code
 
     def get_name(self):
         return self.Name
+
+    # app.jinja_env.globals.update(get_name=get_name)
 
     def get_picture(self):
         return self.Picture
@@ -41,14 +45,19 @@ class MapPlace(db.Model):
     def get_location(self):
         return self.Location
 
-class healthy(MapPlace):
-    __tablename__ = 'MapPlace'
-
-    def __init__(self, Name, Picture, Color , Longitude, Latitude,location):
-        super().__init__(Name, Picture, Color , Longitude, Latitude,location )
-        self.Category = ''
-
     def get_category(self):
         return self.Category
 
+    def get_postal_code(self):
+        return self.Postal_Code
 
+
+class healthy(MapPlace):
+    __tablename__ = 'MapPlace'
+
+    def __init__(self, Name, Picture, Color , Longitude, Latitude,Location,Category ,Postal_Code):
+        super().__init__(Name, Picture, Color , Longitude, Latitude,Location, Category ,Postal_Code )
+        self.Category = 'Healthy'
+
+    def get_category(self):
+        return self.Category

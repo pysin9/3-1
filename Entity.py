@@ -26,6 +26,7 @@ class MapPlace(db.Model):
     Latitude = db.Column(db.Integer)
     Location = db.Column(db.String(2083))
     Category = db.Column(db.String(64))
+    Postal_Code = db.Column(db.String(32))
 
     @hybrid_property
     def Cate(self):

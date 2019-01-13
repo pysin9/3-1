@@ -638,7 +638,7 @@
     line-height: 18px;
     color: #555;
 	padding: 6px 8px;
-    
+
     background: white;
     background: rgba(255,255,255,0.6);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -652,3 +652,4 @@
     opacity: 0.7;
 	border-radius: 50%
 }
+.leaflet-control-layers-group-name{font-weight:700;margin-bottom:.2em;margin-left:3px}.leaflet-control-layers-group{margin-bottom:.5em}.leaflet-control-layers-scrollbar{overflow-y:scroll;padding-right:10px}

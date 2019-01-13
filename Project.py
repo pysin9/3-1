@@ -22,9 +22,10 @@ def userprofile():
     return render_template('userprofile.html')
 
 
-@app.route("/map")
+@app.route("/map" ,methods=['GET','POST'])
 def map():
-    return render_template('map.html')
+    data = MapPlace.query.all()
+    return render_template('map.html', data=data )
 
 
 @app.route('/calcount', methods=['GET'])
@@ -84,21 +85,22 @@ if __name__ == "__main__":
 @app.route("/api", methods=['POST'])
 def api():
     db_data = MapPlace.query.all()
-    infornation_dic = {}
-    infornation_list = []
+    information_dic = {}
+    information_list = []
     for data in db_data:
-        infornation_dic['data'] = []
-        infornation_dic['Name'] = data.Name
-        infornation_dic['Picture'] = data.Picture
-        infornation_dic['Color'] = data.Color
-        infornation_dic['Longitude'] = data.Longitude
-        infornation_dic['Latitude'] = data.Latitude
-        infornation_dic['Location'] = data.Location
-        infornation_dic['Category'] = data.Category
-        infornation_list.append(infornation_dic)
-        infornation_dic = {}
+        information_dic['data'] = []
+        information_dic['Name'] = data.Name
+        information_dic['Picture'] = data.Picture
+        information_dic['Color'] = data.Color
+        information_dic['Longitude'] = data.Longitude
+        information_dic['Latitude'] = data.Latitude
+        information_dic['Location'] = data.Location
+        information_dic['Category'] = data.Category
+        information_dic['Postal_Code'] = data.Postal_Code
+        information_list.append(information_dic)
+        information_dic = {}
 
-    return json.dumps(infornation_list)
+    return json.dumps(information_list)
 
 
 if __name__ == '__main__':

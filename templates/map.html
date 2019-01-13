@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Map</title>
-    <link rel="stylesheet" href="static/css/leaflet.css"/>
-    <link rel="stylesheet" href="static/css/screen.css"/>
-    <link rel="stylesheet" href="static/css/MarkerCluster.css"/>
-    <link rel="stylesheet" href="static/css/MarkerCluster.Default.css"/>
-    <link rel="stylesheet" href="static/css/leaflet-search.min.css"/>
-    <link rel="stylesheet" href="static/css/L.Control.Locate.min.css"/>
-    <link rel="stylesheet" href="static/css/styles.css"/>
+    <link rel="stylesheet" href="/static/css/leaflet.css"/>
+    <link rel="stylesheet" href="/static/css/screen.css"/>
+    <link rel="stylesheet" href="/static/css/MarkerCluster.css"/>
+    <link rel="stylesheet" href="/static/css/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="/static/css/leaflet-search.min.css"/>
+    <link rel="stylesheet" href="/static/css/L.Control.Locate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <link rel="stylesheet" href="/static/css/styles.css"/>
     <link rel="stylesheet" href="https://rawgithub.com/ebrelsford/Leaflet.loading/master/src/Control.Loading.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/ingredients.css"/>
-    <script src="static/js/leaflet.js"></script>
-    <script src="static/js/leaflet.markercluster.js"></script>
-    <script src="static/js/leaflet-search.min.js"></script>
-    <script src="static/js/leaflet.smoothmarkerbouncing.js"></script>
-    <script src="static/js/L.Control.Locate.min.js"></script>
-    <script src="static/js/Control.FullScreen.js"></script>
-    <script src="static/js/jquery.min.js"></script>
-    <script src="https://rawgithub.com/ebrelsford/Leaflet.loading/master/src/Control.Loading.js"></script>
-
+    <script src="/static/js/leaflet.js"></script>
+    <script src="/static/js/leaflet.markercluster.js"></script>
+    <script src="/static/js/leaflet-search.min.js"></script>
+    <script src="/static/js/leaflet.smoothmarkerbouncing.js"></script>
+    <script src="/static/js/L.Control.Locate.min.js"></script>
+    <script src="/static/js/Control.FullScreen.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/loading.js"></script>
+{#    <script src="static/js/exampledata.js"></script>#}
+    <script src="/static/js/leaflet.featuregroup.subgroup.js"></script>
+{#    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>#}
+{#    <script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js"></script>#}
+    <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-expand-lg" >
@@ -64,6 +70,59 @@
      </nav>
 
     <div id="map"></div>
-    <script src="static/js/app.js"></script>
+{#        <div class="leaflet-control-layers-overlays">#}
+{#            <label>#}
+{#                <div>#}
+{#                    <input type="checkbox" class="leaflet-control-layers-selector"><span> ALL</span>#}
+{#                </div>#}
+{#            </label>#}
+{#        </div>#}
+{#    <div id="test">#}
+{#        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">#}
+{#        <ul id="myUL">#}
+{#        {% for name in data %}#}
+{#            <li><a href="#">{{ name.Name }}</a></li>#}
+{#        {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
+    <script src="/static/js/app.js"></script>
+    <script>
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    {#document.addEventListener('DOMContentLoaded', function() {#}
+    {#    document.getElementsByClassName("leaflet-control-layers-selector").checked = true;#}
+    {#    console.log('Gave money ');#}
+
+{#    function checked() {#}
+{#       document.getElementsByClassName("leaflet-control-layers-selector").checked = true;#}
+{#   $(document).ready(function() {#}
+{#    $("input:checkbox").prop('checked', true);#}
+
+{#    $("#checkAll").click(function(){#}
+{#    $('input:checkbox').not(this).prop('checked', this.checked);#}
+{#    $(document).ready(function() {#}
+{#        document.getElementsByClassName('leaflet-control-layers-selector')[0].setAttribute('id', 'checkAll');#}
+{##}
+{#    $("#checkAll").click(function () {#}
+{#        $('input:checkbox').not(this).prop('checked', this.checked);#}
+{##}
+{#    });#}
+{#    });#}
+</script>
+
 </body>
 </html>

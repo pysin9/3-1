@@ -1,4 +1,9 @@
-var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+var streets = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{
+    maxZoom: 18,
+    minZoom: 12,
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+var grayscale = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
     maxZoom: 18,
     minZoom: 12,
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -13,13 +18,49 @@ var map = L.map('map', {
         title: "Show me the fullscreen !",
         titleCancel: "Exit fullscreen mode"
     },
-    layers: [tiles]
+    layers: [grayscale, streets ]
 });
-var markers = L.markerClusterGroup()
+
+var markers = L.markerClusterGroup(),
+    markers1 = L.featureGroup.subGroup(markers),
+    markers2 = L.featureGroup.subGroup(markers),
+    markers3 = L.featureGroup.subGroup(markers),
+    markers4 = L.featureGroup.subGroup(markers),
+    markers5 = L.featureGroup.subGroup(markers),
+    markers6 = L.featureGroup.subGroup(markers),
+    markers7 = L.featureGroup.subGroup(markers),
+    markers8 = L.featureGroup.subGroup(markers),
+    control = L.control.layers(null, null, { collapsed: false }),
+    i, a, title, marker;
+markers.addTo(map);
+
+control.addOverlay(markers1, 'Spicy');
+control.addOverlay(markers2, 'Halal');
+control.addOverlay(markers3, 'Vegertarian');
+control.addOverlay(markers4, 'Healthy');
+control.addOverlay(markers5, 'Elder Friendly');
+control.addOverlay(markers6, 'Desert');
+control.addOverlay(markers7, 'Hawker');
+control.addOverlay(markers8, 'Cafes')
+control.addTo(map);
+
+
+
+markers1.addTo(map);
+markers2.addTo(map);
+markers3.addTo(map);
+markers4.addTo(map);
+markers5.addTo(map);
+markers6.addTo(map);
+markers7.addTo(map);
+markers8.addTo(map);
+
+
+
 
 var markerList = [];
 var controlSearch = new L.Control.Search({
-    position: 'topright',
+    position: 'topleft',
     layer: markers,
     initial: false,
     zoom: 18,
@@ -53,10 +94,32 @@ $.ajax({
             marker.bindPopup(content, {
                 maxWidth: 600
             });
-
             markers.addLayer(marker);
             markerList.push(marker);
-
+            if (map_data[i].Color === "#de2d26") {
+                markers1.addLayer(marker);
+            }
+            if (map_data[i].Color === "#000000") {
+                markers2.addLayer(marker);
+            }
+            if (map_data[i].Color === "#377eb8") {
+                markers3.addLayer(marker);
+            }
+            if (map_data[i].Color === "#4daf4a") {
+                markers4.addLayer(marker);
+            }
+            if (map_data[i].Color === "#984ea3") {
+                markers5.addLayer(marker);
+            }
+            if (map_data[i].Color === "#fc8d59") {
+                markers6.addLayer(marker);
+            }
+            if (map_data[i].Color === "#A0522D") {
+                markers7.addLayer(marker);
+            }
+            if (map_data[i].Color === "#E4D03B") {
+                markers8.addLayer(marker);
+            }
         }
         controlSearch.on('search:locationfound', function (e) {
             if (e.layer._popup) {
@@ -71,7 +134,27 @@ $.ajax({
             }
         });
         map.addControl(controlSearch);
-        map.addLayer(markers);
+        // map.addLayer(markers);
+        // map.addLayer(markers1);
+        // var all =L.layerGroup();
+        // markers.addTo(all);
+        // var groupedOverlays = {
+        //         "Total": all,
+        //         "Total1": all1,
+        //
+        //
+        // };
+//         var options = {
+//         // Make the "Landmarks" group exclusive (use radio inputs)
+//         exclusiveGroups: ["All"],
+//         // Show a checkbox next to non-exclusive group labels for toggling all
+//         groupCheckboxes: true
+// };
+        markers.addTo(markers);
+        // L.control.layers(baseMaps,groupedOverlays,options).addTo(map);
+        // var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays, options);
+        // map.addControl(layerControl);
+        // map.addLayer(markers);
         //mini map
         lc = L.control.locate({
             position: 'topright',
@@ -84,7 +167,7 @@ $.ajax({
         }).addTo(map);
 
 
-    }
+    },
 });
  // Add our zoom control manually where we want to
 var zoomControl = L.control.zoom({
@@ -102,11 +185,13 @@ map.addControl(loadingControl);
 
 function getColor(d) {
         return d === 'Spicy'  ? "#de2d26" :
+               d === 'Halal' ? "#000000":
                d === 'Vegertarian'  ? "#377eb8" :
-               d === 'Halal' ? "#4daf4a" :
+               d === 'Healthy' ? "#4daf4a" :
                d === 'Elder friendly' ? "#984ea3" :
                d === 'Desert' ? "#fc8d59":
-                   "#ffffff";
+               d === 'Hawker' ? "#A0522D":
+                   "#E4D03B";
 
     }
 
@@ -126,8 +211,8 @@ var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend');
-    labels = ['<strong>Legend</strong>'],
-    categories = ['Spicy','Vegertarian','Halal','Elder friendly','Desert','Others'];
+    labels = ['<strong>Legend</strong>'];
+    categories = ['Spicy','Halal','Vegertarian','Healthy','Elder friendly','Desert','Hawker','Cafes'];
 
     for (var i = 0; i < categories.length; i++) {
 
