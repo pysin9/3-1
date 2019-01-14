@@ -1,15 +1,30 @@
-from flask import *
+from flask import render_template, url_for, redirect, request, session, flash, redirect, url_for, send_from_directory
 from dbModel import *
-from flask import Flask, render_template, flash, url_for, redirect, session, request
 from form import *
-from user import *
+from calcount import *
+from werkzeug.utils import secure_filename
+import os
+import sqlite3
+import hashlib
+from user import is_valid
+import simplejson as json
 
 app = Flask(__name__)
+UPLOAD_FOLDER = '/static/images/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = "secret"
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
+app.secret_key = 'Secret Secret'
 
 @app.route('/')
 def index():
-    return render_template("Homepagee.html")
+    if 'username' in session:
+        return render_template('userprofile.html')
+    else:
+        return render_template('Homepagee.html')
 
 
 @app.route('/ingredient')
@@ -28,45 +43,133 @@ def map():
     return render_template('map.html', data=data )
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/login/", methods=['GET', 'POST'])
 def login():
-    login_form = LoginForm(request.form)
-    error = None
-    if request.method == 'POST':
-        user = get_user(login_form.id.data, login_form.password.data)
-        if user is None:
-            error = 'Wrong username and password'
+    form = LoginForm(request.form)
+    if request.method == 'POST' and form.validate_on_submit():
+        email = request.form['email']
+        password = request.form['password']
+        if is_valid(email, password):
+            session['email'] = email
+            return redirect(url_for('userprofile'))
         else:
-            session['username'] = user.username
-            return redirect(url_for('index'))
-        flash(error)
-    return render_template('login.html', form=login_form)
+            error = 'Invalid UserId / Password'
+            return render_template('login.html', error=error)
+    return render_template("login.html")
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
-    if request.method == 'POST':
-        username = form.id.data
-        password = form.password.data
-        error = None
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        else:
-            create_user(username, password)
-            return redirect(url_for('login'))
-        flash(error)
-    return render_template('signup.html', form=form)
+    if request.method == 'POST'and form.validate_on_submit():
+        username = request.form['username']
+        password = request.form['password']
+        town = request.form['town']
+        weight = request.form['weight']
+        height = request.form['height']
+        with sqlite3.connect('users.db') as con:
+            try:
+                cur = con.cursor()
+                cur.execute(
+                    'INSERT INTO users (username, password, town, weight, height) VALUES (?, ?, ?, ?, ?)',
+                    (username, hashlib.md5(password.encode()).hexdigest(), town, weight, height))
+                con.commit()
+
+                msg = "Registered Successfully"
+            except:
+                con.rollback()
+                msg = "Error occured"
+        con.close()
+        return render_template("login.html", error=msg)
+    return render_template("signup.html")
+
 
 @app.route("/reset")
 def reset():
-    return render_template("reset.html")
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    if request.method == "POST":
+        oldPassword = request.form['oldpassword']
+        oldPassword = hashlib.md5(oldPassword.encode()).hexdigest()
+        newPassword = request.form['newpassword']
+        newPassword = hashlib.md5(newPassword.encode()).hexdigest()
+        with sqlite3.connect('users.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT username, password FROM users WHERE username = ?", (session['username'],))
+            username, password = cur.fetchone()
+            if password == oldPassword:
+                try:
+                    cur.execute("UPDATE users SET password = ? WHERE username = ?", (newPassword, username))
+                    conn.commit()
+                    flash("Changed successfully", 'success')
+                except:
+                    conn.rollback()
+                    flash("Failed", 'danger')
+                return render_template("reset.html")
+            else:
+                flash("Wrong password", 'danger')
+        conn.close()
+        return render_template("reset.html")
+    else:
+        return render_template("reset.html")
 
+@app.route("/logout")
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+@app.route('/calcount', methods=['GET', 'POST'])
+def calcount():
+    form = CalCount(request.form)
+    result = 0
+    try:
+        if request.method == 'POST':
+            result = Calories(int(request.form['calorie1']), int(request.form['calorie2']),
+                              int(request.form['calorie3']))
+    except ValueError:
+        flash('Please enter an integer')
+    store = result
+    return render_template('calcount.html', form=form, result=result, store=store)
+
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    bmi = 0
+    form = UpdateProfile(request.form)
+    if request.method == 'POST':
+        bmi = float(request.form['weight']) / (float(request.form['weight']) * float(request.form['weight']))
+    return render_template('profile.html', bmi=bmi, form=form)
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def upload_file():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 if __name__ == "__main__":
-    app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
+    app.run(host='0.0.0.0')
 
 
 @app.route("/api", methods=['POST'])
