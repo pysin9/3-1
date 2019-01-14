@@ -28,8 +28,8 @@ def calcount():
     return render_template('calcount.html', form=form, result=result, store=store)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
     bmi = 0
     form = UpdateProfile(request.form)
     if request.method == 'POST':

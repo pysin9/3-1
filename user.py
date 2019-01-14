@@ -1,45 +1,26 @@
-import shelve
+import sqlite3, hashlib
+from flask import session
 
 
-class User:
-    def __init__(self):
-        self.username = ''
-        self.password = ''
+def is_valid(username, password):
+    con = sqlite3.connect('users.db')
+    cur = con.cursor()
+    cur.execute('SELECT username, password FROM users')
+    data = cur.fetchall()
+    for row in data:
+        if row[0] == username and row[1] == hashlib.md5(password.encode()).hexdigest():
+            return True
+    return False
 
 
-users = shelve.open('user')
-
-
-def clear_user():
-    klist = list(users.keys())
-    for key in klist:
-        del users[key]
-
-
-def get_users():
-    user_list = []
-    klist = list(users.keys())
-    for key in klist:
-        user_list.append(users[key])
-    return user_list
-
-
-def init_users():
-    clear_user()
-    for i in range(5):
-        create_user('user'+str(i), 'pass'+str(i))
-
-
-def get_user(username, password):
-    if username in users:
-        user = users[username]
-        if user.password == password:
-            return user
-    return None
-
-
-def create_user(username, password):
-    u = User()
-    u.username = username
-    u.password = password
-    users[username] = u
+def getLoginDetails():
+    with sqlite3.connect('users.db') as conn:
+        cur = conn.cursor()
+        if 'username' not in session:
+            loggedIn = False
+        else:
+            loggedIn = True
+            cur.execute("SELECT username FROM users WHERE username = ?", (session['username'], ))
+            username = cur.fetchone()
+    conn.close()
+    return (loggedIn, username)

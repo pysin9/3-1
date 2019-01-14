@@ -5,22 +5,31 @@
      <title>Register</title>
      <link rel="stylesheet" href= "/static/css/signup.css"/>
      <link rel="shortcut icon" href="/static/images/favicon.ico" />
+      <script type="text/javascript" src="{{ url_for('static', filename = 'js/validateForm.js') }}"></script>
       {%  from "_formhelper.html" import render_field %}
  </head>
  <body >
      <div class = "blue">
+         {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+         {% endwith %}
          <div class = "container">
                 <div class = "login">
-                    <form class = "form"  method ='POST' action = "/register">
+                    <form class = "form"  method ='POST' action = "/register" onsubmit="return validate()">
                      <span class="form-title b">
                            Don't have an account? create one and join us!
                      </span>
-
           			 <span class="txt1 white">
 						Username
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-36" >
-						 {{ form.id(class='input100') }}
+						 <input class="input100" type="text" name="username"  required>
 						 <span class="focus-input100"></span>
 					 </div>
 
@@ -28,65 +37,38 @@
 						Password
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 {{ form.password(class='input100') }}
+						 <input class="input100" type="password" name="pass" id="cpassword" required>
 						 <span class="focus-input100"></span>
 					 </div>
                      <span class="txt1 blue">
 						Town you live in
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 {{ form.town (class='input100') }}
+						 <input class="input100" type="text" name="town"  required>
 						 <span class="focus-input100"></span>
 					 </div>
                      <span class="txt1 blue">
 						weight
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 {{ form.weight(class='input100') }}
+						 <input class="input100" type="text" name="weight"  required>
 						 <span class="focus-input100"></span>
 					 </div>
                      <span class="txt1 blue">
 						height
 					 </span>
 					 <div class="wrap-input100 validate-input m-b-12" >
-						 {{ form.height(class='input100') }}
+						 <input class="input100" type="text" name="height"  required>
 						 <span class="focus-input100"></span>
 					 </div>
                      <div class="container-login100-form-btn">
-							{{ form.submit(class ="login100-form-btn") }}
+							<a href="/login/" type = "submit" class="login100-form-btn">
+							Sign Up
+						 </a>
 					 </div>
                   </form>
                   <div class = "more" >
                   </div>
-
-                  <script>
-
-                        var form = document.querySelector('.form');
-
-                        function saveToStorage(e){
-                            var inputName = document.getElementById("name").value;
-                            var inputEmail = document.getElementById("email").value;
-                            var inputPassword = document.getElementById("password").value;
-                            var inputTown = document.getElementById('town').value
-                            var inputHeight = document.getElementById('height').value
-                            var inputWeight = document.getElementById('weight').value
-                            var obj={};
-                            obj.name = inputName
-                            obj.password = inputPassword
-                            obj.town = inputTown
-                            obj.height = inputHeight
-                            obj.weight = inputWeight
-                            localStorage.saveUsername = inputName
-                            localStorage.savePassword = inputPassword
-                            localStorage.saveTown = inputTown
-                            localStorage.saveHeight = inputHeight
-                            localStorage.saveWeight = inputWeight
-                            var profileValues = JSON.stringify(obj)
-                            localStorage.profile = profileValues
-                            console.log(localStorage.getItem("profile"))
-                        }
-                        form.addEventListener('submit', saveToStorage);
-                 </script>
              </div>
          </div>
      </div>
