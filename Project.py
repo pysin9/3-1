@@ -8,6 +8,7 @@ import sqlite3
 import hashlib
 from user import is_valid
 import simplejson as json
+from flask.ext.cache import Cache
 
 app = Flask(__name__)
 UPLOAD_FOLDER = '/static/images/'
@@ -16,6 +17,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "secret"
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 app.secret_key = 'Secret Secret'
 
@@ -38,6 +40,7 @@ def userprofile():
 
 
 @app.route("/map" ,methods=['GET','POST'])
+@cache.cached(timeout=100)
 def map():
     data = MapPlace.query.all()
     return render_template('map.html', data=data )

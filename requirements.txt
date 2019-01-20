@@ -15,3 +15,4 @@ python-editor==1.0.3
 SQLAlchemy==1.1.5
 texttable==0.8.7
 Werkzeug==0.11.15
+Flask-Cache==0.13
