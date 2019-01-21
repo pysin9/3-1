@@ -1,17 +1,21 @@
 var streets = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{
     maxZoom: 18,
-    minZoom: 12,
+    minZoom: 11,
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
 var grayscale = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
     maxZoom: 18,
-    minZoom: 12,
+    minZoom: 11,
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
 var latlng = L.latLng(1.3521, 103.8198);
+var southWest = L.latLng(1.203636,  103.608910),
+    northEast = L.latLng(1.471448, 104.029089),
+bounds = L.latLngBounds(southWest, northEast);
 var map = L.map('map', {
     center: latlng,
-    zoom: 12,
+    zoom: 11,
+    maxBounds:bounds,
     zoomControl: false,
     fullscreenControl: true,
     fullscreenControlOptions: { // optional
