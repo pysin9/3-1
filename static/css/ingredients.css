@@ -1,6 +1,11 @@
 #ingre{
 background-repeat: no-repeat;
 }
+#searchButton {
+	height: 50px;
+	width: 50px;
+  left: 300px;
+}
 .bubble {
     right: 34px;
     position: relative;
