@@ -1,11 +1,5 @@
 body{color: #555555;}
 
-#stats{width:250px;
-       height:250px;
-	   position:absolute;
-	   left: 200px;
-	   bottom: 70px;
-	   }
 p{font-size:20px;
   position:absolute;
   left:205px;

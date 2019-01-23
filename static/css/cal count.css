@@ -67,10 +67,10 @@ input[type=submit]{position:absolute;
     border-radius: 50%;
     left: 700px;
     top: 130px;
-    background-color: #00b33c;}
+    background-image:url('/images/plus.png');}
 
-#image{width:140px;
-     height:140px;
+.plus{width:100px;
+     height:100px;
      position:absolute;
      top:-10px;
      left:-10px;}
@@ -93,3 +93,8 @@ input{position: absolute;
 
 #input3{left:665px;}
 
+#home{position:absolute;
+      right:170px;
+      top: 80px;
+      height: 200px;
+      cursor: pointer;}
