@@ -8,7 +8,7 @@ import sqlite3
 import hashlib
 from user import is_valid
 import simplejson as json
-from flask.ext.cache import Cache
+from flask_cache import Cache
 
 app = Flask(__name__)
 UPLOAD_FOLDER = '/static/images/'
@@ -42,11 +42,10 @@ def userprofile():
 @app.route("/map" ,methods=['GET','POST'])
 @cache.cached(timeout=100)
 def map():
-    data = MapPlace.query.all()
-    return render_template('map.html', data=data )
+    return render_template('map.html' )
 
 
-@app.route("/login/", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate_on_submit():
@@ -175,7 +174,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0')
 
 
-@app.route("/api", methods=['POST'])
+@app.route("/api/mapplace", methods=['POST'])
 def api():
     db_data = MapPlace.query.all()
     information_dic = {}

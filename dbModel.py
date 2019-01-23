@@ -52,12 +52,4 @@ class MapPlace(db.Model):
         return self.Postal_Code
 
 
-class healthy(MapPlace):
-    __tablename__ = 'MapPlace'
 
-    def __init__(self, Name, Picture, Color , Longitude, Latitude,Location,Category ,Postal_Code):
-        super().__init__(Name, Picture, Color , Longitude, Latitude,Location, Category ,Postal_Code )
-        self.Category = 'Healthy'
-
-    def get_category(self):
-        return self.Category

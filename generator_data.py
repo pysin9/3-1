@@ -1,12 +1,11 @@
 from dbModel import *
-import random
 
-name = ["Lickers"," Brotherbird Milk & Croissants","Aqua S"," C Plus","A Summer in Paris","Tarte by Cheryl Koh","D9 Cakery","FATCAT Ice Cream Bar","Caffe Fernet","House of MU",
+name = ["Lickers","Brotherbird Milk & Croissants","Aqua S"," C Plus","A Summer in Paris","Tarte by Cheryl Koh","D9 Cakery","FATCAT Ice Cream Bar","Caffe Fernet","House of MU",
         " Brewerkz Restaurant & Microbrewery","Ramen Keisuke Tonkotsu King"," Ramen Keisuke Tori King","4Fingers Crispy Chicken","Nong Khai Beer House","IPPUDO - Mandarin Gallery","Komala Vilas Restaurant","Al-Azhar Eating Restaurant","Salmon Samurai","Kinki Restaurant & Bar",
 "Chicken Up","Lucha Loco","Kim Dae Mun Korean Food","Jai Thai","Nakhon Kitchen","Bei-ing Wanton Mee","Prawnaholic","Jin Ji Teochew Braised Duck","Burgernomics","Yaowarat Thai Kway Chap",
 "Hao Lai Ke","Oinkers & Buns","Yokozuna Stall","House of Happiness","Boon’s Noodles","Haru","Two Hana","Two Men Bagel House 2.0","Grids and Circles","Columbus Coffee Co.",
 "Clan Cafe","Seven and Ate","Earlybird","Five Oars Coffee Roasters","Bearded Bella","Loving Hut","Komala Vilas Restaurant","Zi Zai Vegetarian(Yishun)","nomVnom","GreenDot",
-" Annalakshmi","Kailash Parbat","Hwa Jin Vegetarian Family Restaurant"," Pepper Jade Thai Vegetarian Cuisine","Gokul Vegetarian Restaurant","Spize","Selera Rasa Nasi Lemak","Singapore Zam Zam Restaurant","Halia Restaurant","Hajah Maimunah Restaurant",
+"Annalakshmi","Kailash Parbat","Hwa Jin Vegetarian Family Restaurant"," Pepper Jade Thai Vegetarian Cuisine","Gokul Vegetarian Restaurant","Spize","Selera Rasa Nasi Lemak","Singapore Zam Zam Restaurant","Halia Restaurant","Hajah Maimunah Restaurant",
 "Projcet Acai, Holland Village","Loving Hut","Shinkansen","Afterglow by Anglow","Kilo at Pact","VeganBurg","HICJUICE","Real Food ","GAEST","The Lawn",
 "Beng Hiang Restaurant","Bee Heong Palace Restaurant","Beng Thin Hoon Kee Restaurant"," Quan Xin Yuan Restaurant","Spring Court (Yong Chun Yuan) Restaurant","","","","","",
 "","","","","","","","","","",
@@ -126,7 +125,7 @@ longitude = [ "103.8843973","103.8609518","103.8300997","103.8502038","103.81986
 "103.9279161","103.8443955","103.8515885","103.946526","103.8615516","103.8403082","103.9413478","103.8409243","103.8459553","103.8331812",
 "103.8381863","103.8585324","103.8560007","103.8418214","103.8406549","103.8990962","103.8490366","103.8186145","103.8500369","103.8500369",
 "103.8352553","103.8529521","103.7490222","103.8486151","103.8502851","103.7784503","103.8120792","103.8562698","103.8127923","103.7458216",
-"103.7926024","103.8990962","103.8494971","103.8395119","103.8381399","103.9032825","103.8441913,17","103.8368403","103.8450926","103.79018",
+"103.7926024","103.8990962","103.8494971","103.8395119","103.8381399","103.9032825","103.8441913","103.8368403","103.8450926","103.79018",
 "103.7380412","103.8269578","103.8469862","103.8560215","103.8423406","","","","","",
 "","","","","","","","","","",
 "","","","","","","","","","",

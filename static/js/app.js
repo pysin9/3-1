@@ -3,11 +3,6 @@ var streets = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{
     minZoom: 11,
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
-var grayscale = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    minZoom: 11,
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-});
 var latlng = L.latLng(1.3521, 103.8198);
 var southWest = L.latLng(1.203636,  103.608910),
     northEast = L.latLng(1.471448, 104.029089),
@@ -22,7 +17,7 @@ var map = L.map('map', {
         title: "Show me the fullscreen !",
         titleCancel: "Exit fullscreen mode"
     },
-    layers: [grayscale, streets ]
+    layers: [ streets ]
 });
 
 var markers = L.markerClusterGroup(),
@@ -71,6 +66,12 @@ var controlSearch = new L.Control.Search({
     marker: false
 });
 
+// function tableHide(){
+//     document.getElementById("all").display = "none";
+// }
+// function tableShow(){
+//     document.getElementById("all").display = "block";
+// }
 $.ajax({
     url: '/api',
     type: 'POST',
@@ -93,8 +94,7 @@ $.ajax({
             }).on('click', function () {
                 this.bounce(2);
             }).addTo(markers);
-
-            var content = title + "</br>" + "Location:" + map_data[i].Location + "</br>" +"Latitude:" + map_data[i].Latitude + "</br>" + "Longitude:" + map_data[i].Longitude;
+            var content = title + "</br>" + "Location:" + map_data[i].Location + "</br>" + "Postal Code:"+ map_data[i].Postal_Code + "</br>" +"Latitude:" + map_data[i].Latitude + "</br>" + "Longitude:" + map_data[i].Longitude + "<br>"+"<span id='more'></span>" + "</br>";
             marker.bindPopup(content, {
                 maxWidth: 600
             });
