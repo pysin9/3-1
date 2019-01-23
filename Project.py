@@ -6,12 +6,12 @@ from werkzeug.utils import secure_filename
 import os
 import sqlite3
 import hashlib
-from user import is_valid
+
 import simplejson as json
 from flask.ext.cache import Cache
 
 app = Flask(__name__)
-
+app.secret_key = 'secret secret'
 UPLOAD_FOLDER = '/static/images/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -81,36 +81,44 @@ def uploaded_file(filename):
                                filename)
 
 
+def is_valid(username, password: str):
+    con = sqlite3.connect('users.db')
+    cur = con.cursor()
+    cur.execute('SELECT password FROM users WHERE username = ?', (username,))
+    data = cur.fetchone()
+    if hashlib.sha256(password.encode()).hexdigest() == data[0]:
+        return True
+    return False
+
+
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
-    form = LoginForm(request.form)
-    if request.method == 'POST' and form.validate_on_submit():
-        email = request.form['email']
-        password = request.form['password']
-        if is_valid(email, password):
-            session['email'] = email
-            return redirect(url_for('userprofile'))
+    if request.method == 'POST':
+        username = request.form.get('username', False)
+        password = request.form.get('password', False)
+        if is_valid(username, password):
+            session['username'] = username
+            return redirect(url_for('index'))
         else:
-            error = 'Invalid UserId / Password'
-            return render_template('login.html', error=error)
+            msg = 'Invalid UserId / Password'
+            return render_template('login.html', error=msg)
     return render_template("login.html")
 
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/register/", methods=['GET', 'POST'])
 def register():
-    form = RegisterForm(request.form)
-    if request.method == 'POST'and form.validate_on_submit():
-        username = request.form['username']
-        password = request.form['password']
-        town = request.form['town']
-        weight = request.form['weight']
-        height = request.form['height']
+    if request.method == 'POST':
+        username = request.form.get('username', False)
+        password = request.form.get('password', False)
+        town = request.form.get('town', False)
+        weight = request.form.get('weight', False)
+        height = request.form.get('height', False)
         with sqlite3.connect('users.db') as con:
             try:
                 cur = con.cursor()
                 cur.execute(
                     'INSERT INTO users (username, password, town, weight, height) VALUES (?, ?, ?, ?, ?)',
-                    (username, hashlib.md5(password.encode()).hexdigest(), town, weight, height))
+                    (username, hashlib.sha256(password.encode()).hexdigest(), town, weight, height))
                 con.commit()
 
                 msg = "Registered Successfully"
@@ -121,6 +129,17 @@ def register():
         return render_template("login.html", error=msg)
     return render_template("signup.html")
 
+@app.route("/registerForm")
+def registrationForm():
+    return render_template("signup.html")
+
+
+@app.route("/loginForm")
+def loginForm():
+    if 'email' in session:
+        return redirect(url_for('userprofile'))
+    else:
+        return render_template('login.html', error='')
 
 @app.route("/reset")
 def reset():
