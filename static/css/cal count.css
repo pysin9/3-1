@@ -66,7 +66,7 @@ input[type=submit]{position:absolute;
     height:133px;
     border-radius: 50%;
     left: 700px;
-    top: 130px;
+    top: 165px;
     background-image:url('/images/plus.png');}
 
 .plus{width:100px;
@@ -98,3 +98,14 @@ input{position: absolute;
       top: 80px;
       height: 200px;
       cursor: pointer;}
+
+.flash { margin: 1em 0;
+         padding: 1em;
+         background: #ffffff;
+         border: 2px solid black;
+         z-index: 10000;
+         position:absolute;
+         left: 270px;
+         top: 220px;
+         color: #cc0000;
+         font-size: 30px;}
