@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .listing{
+        padding: 0.01em 16px;
+        width: 26%;
+        display: inline-block;
+    }
+    div>ul>li{
+        padding-bottom: 5px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="POST" action="/admin">
+        <input type="text" name="Name" placeholder="Name"/>
+        <input type="text" name="Picture" placeholder="Picture"/>
+        <input type="text" name="Color" placeholder="Color"/>
+        <input type="text" name="Longitude" placeholder="Longitude"/>
+        <input type="text" name="Latitude" placeholder="Latitude"/>
+        <input type="text" name="Location" placeholder="Location"/>
+        <input type="text" name="Category" placeholder="Category"/>
+        <input type="text" name="Postal_Code" placeholder="Postal_Code"/>
+        <input type="submit" value="Add"/>
+    </form>
+<h1>Mapplace</h1>
+<div class="listing">
+    <ul>
+    {% for mapplace in mapplaces %}
+        <li>{{mapplace.Name}}</li>
+        <form method="POST" action="/update">
+            <input type="hidden" value="{{mapplace.Name}}" name="oldname">
+            <input type="text" value="{{mapplace.Name}}" name="newname">
+            <input type="submit" value="Update">
+        </form>
+        <form method="POST" action="./delete">
+          <input type="hidden" value="{{mapplace.Name}}" name="Name">
+          <input type="submit" value="Delete">
+        </form>
+    {% endfor %}
+    </ul>
+</div>
+
+<div class="listing">
+    <ul>
+    {% for mapplace in mapplaces %}
+        <li>{{mapplace.Category}}</li>
+    {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

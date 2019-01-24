@@ -1,16 +1,16 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, flash
 from calcount import *
 from form import *
-from werkzeug.utils import secure_filename
 import os
-from wtforms import *
-
-UPLOAD_FOLDER = '/static/images/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+DEBUG = True
+app.config['SESSION_TYPE'] = 'filesystem'
 app.secret_key = "secret"
+UPLOAD_FOLDER = '/static/images/'
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
@@ -28,8 +28,8 @@ def calcount():
     return render_template('calcount.html', form=form, result=result, store=store)
 
 
-@app.route('/profile', methods=['GET', 'POST'])
-def profile():
+@app.route('/', methods=['GET', 'POST'])
+def index():
     bmi = 0
     form = UpdateProfile(request.form)
     if request.method == 'POST':
@@ -56,12 +56,6 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
 
 
 if __name__ == '__main__':

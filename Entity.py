@@ -39,7 +39,7 @@ Base.metadata.create_all(engine)
 class MapPlace(db.Model):
     __tablename__ = 'MapPlace'
 
-    Id = db.Column(db.Integer, primary_key=True)
+    Id = db.Column(db.Integer,unique=True, nullable=False ,primary_key=True)
     Name = db.Column(db.String(64))
     Picture = db.Column(db.String(128))
     Color= db.Column(db.String(32))
@@ -48,7 +48,6 @@ class MapPlace(db.Model):
     Location = db.Column(db.String(2083))
     Category = db.Column(db.String(64))
     Postal_Code = db.Column(db.String(32))
-
 
 
 if __name__ == '__main__':
