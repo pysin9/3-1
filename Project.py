@@ -194,9 +194,13 @@ if __name__ == "__main__":
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     if request.form :
-        mapplace=MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
-        db.session.add(mapplace)
-        db.session.commit()
+        try:
+            mapplace=MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
+            db.session.add(mapplace)
+            db.session.commit()
+        except Exception as e:
+            print("Failed to add ")
+            print(e)
     mapplaces = MapPlace.query.all()
     return render_template("admin.html" ,mapplaces=mapplaces)
 
@@ -205,7 +209,7 @@ def update():
     try:
         newname = request.form.get("newname")
         oldname = request.form.get("oldname")
-        print("The bloody old name {} and new name {}".format(oldname, newname))
+        print("The old name {} and new name {}".format(oldname, newname))
         mapplace = MapPlace.query.filter_by(Name=oldname).first()
         mapplace.Name = newname
         db.session.commit()

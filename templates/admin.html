@@ -31,12 +31,12 @@
     <ul>
     {% for mapplace in mapplaces %}
         <li>{{mapplace.Name}}</li>
-        <form method="POST" action="/update">
+        <form method="POST" action="/update" style="display: inline">
             <input type="hidden" value="{{mapplace.Name}}" name="oldname">
             <input type="text" value="{{mapplace.Name}}" name="newname">
             <input type="submit" value="Update">
         </form>
-        <form method="POST" action="./delete">
+        <form method="POST" action="./delete" style="display: inline">
           <input type="hidden" value="{{mapplace.Name}}" name="Name">
           <input type="submit" value="Delete">
         </form>
