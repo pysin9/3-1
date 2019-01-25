@@ -3,7 +3,8 @@ body{background-image: url('../images/background1.jpeg');
 	 height: 100%; 
 	 overflow: hidden;
 	 width: 100%;
-	 color: #555555}
+	 color: #555555;
+     font-family: "Roboto", "Helvetica","Arial", Sans-Serif;}
 
 p{margin: 3px;
   color: #000033}
@@ -62,12 +63,11 @@ img{height: 250px;
     }
 
 input[type=submit]{position:absolute;
-    width:127px;
-    height:133px;
-    border-radius: 50%;
+    width:165px;
+    height:100px;
     left: 700px;
     top: 165px;
-    background-image:url('/images/plus.png');}
+    background-color: navajowhite;}
 
 .plus{width:100px;
      height:100px;
