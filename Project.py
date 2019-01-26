@@ -9,17 +9,10 @@ import sqlite3
 import hashlib
 
 import simplejson as json
-from flask.ext.cache import Cache
 
 app = Flask(__name__)
 app.secret_key = 'secret secret'
-UPLOAD_FOLDER = '/static/images/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-app.secret_key = 'Secret Secret'
 
 @app.route('/')
 def index():
@@ -36,7 +29,6 @@ def ingredient():
 
 
 @app.route("/map" ,methods=['GET', 'POST'])
-@cache.cached(timeout=100)
 def map():
     data = MapPlace.query.all()
     return render_template('map.html', data=data)
@@ -44,33 +36,26 @@ def map():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    sesuser = session['username']
     bmi = 0
     form = UpdateProfile(request.form)
     if request.method == 'POST':
-        bmi = float(request.form['weight'])/(float(request.form['weight'])*float(request.form['weight']))
-    return render_template('profile.html', bmi=bmi, form=form)
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-def upload_file():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-
+        username = request.form['username']
+        town = request.form['town']
+        weight = request.form['weight']
+        height = request.form['height']
+        with sqlite3.connect('users.db') as con:
+            try:
+                cur = con.cursor()
+                cur.execute('UPDATE users SET username=?, town=?, weight=?, height=? WHERE username=?', (username, town, weight, height, session['username']))
+                con.commit()
+                flash('Updated Successfully!')
+            except:
+                con.rollback()
+                flash('Update Unsuccessful!')
+        con.close()
+        bmi = float(1) / (float(1) * float(1))
+    return render_template('profile.html', bmi=bmi, form=form, sesuser=sesuser)
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
