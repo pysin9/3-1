@@ -87,6 +87,7 @@ def is_valid(username, password: str):
         return True
     return False
 
+
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -95,6 +96,10 @@ def login():
         if is_valid(username, password):
             session['username'] = username
             return redirect(url_for('index'))
+
+        elif is_valid(username="admin" , password="123"):
+            session['username'] = "admin"
+            return redirect(url_for('admin'))
         else:
             msg = 'Invalid UserId / Password'
             return render_template('login.html', error=msg)
@@ -209,22 +214,45 @@ def update():
     try:
         newname = request.form.get("newname")
         oldname = request.form.get("oldname")
-        print("The old name {} and new name {}".format(oldname, newname))
-        mapplace = MapPlace.query.filter_by(Name=oldname).first()
-        mapplace.Name = newname
-        db.session.commit()
+        newcategory = request.form.get("newcategory")
+        oldcategory = request.form.get("oldcategory")
+        if oldname != newname:
+            print("The old name {} and new name {}".format(oldname, newname))
+            mapplace = MapPlace.query.filter_by(Name=oldname).first()
+            mapplace.Name = newname
+            db.session.commit()
+        elif oldcategory != newcategory:
+            mapplace = MapPlace.query.filter_by(Category=oldcategory).first()
+            mapplace.Category = newcategory
+            db.session.commit()
     except Exception as e:
-        print("Couldn't update book title")
+        print("Couldn't update")
         print(e)
     return redirect("/admin" )
 
 @app.route("/delete", methods=["POST"])
 def delete():
     name = request.form.get("Name")
-    mapplace = MapPlace.query.filter_by(Name=name).first()
-    db.session.delete(mapplace)
-    db.session.commit()
+    category = request.form.get("Category")
+    if name == name :
+        mapplace = MapPlace.query.filter_by(Name=name).first()
+        # mapplace1 = MapPlace.query.filter_by(Category=category).first()
+        db.session.delete(mapplace)
+        # db.session.delete(mapplace1)
+        db.session.commit()
+    elif  category == category:
+        category = request.form.get("Category")
+        mapplace1 = MapPlace.query.filter_by(Category=category).first()
+        db.session.delete(mapplace1)
     return redirect("/admin")
+
+
+# def delete1():
+#     category = request.form.get("Category")
+#     mapplace1 = MapPlace.query.filter_by(Category=category).first()
+#     db.session.delete(mapplace1)
+#     db.session.commit()
+#     return redirect("/admin")
 
 @app.route("/api", methods=['POST'])
 def api():

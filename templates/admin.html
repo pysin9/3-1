@@ -17,7 +17,7 @@
 <body>
     <form method="POST" action="/admin">
         <input type="text" name="Name" placeholder="Name"/>
-        <input type="text" name="Picture" placeholder="Picture"/>
+        <input type="text" name="Picture" placeholder="Link for the picture"/>
         <input type="text" name="Color" placeholder="Color"/>
         <input type="text" name="Longitude" placeholder="Longitude"/>
         <input type="text" name="Latitude" placeholder="Latitude"/>
@@ -48,6 +48,15 @@
     <ul>
     {% for mapplace in mapplaces %}
         <li>{{mapplace.Category}}</li>
+        <form method="POST" action="/update" style="display: inline">
+            <input type="hidden" value="{{mapplace.Category}}" name="oldcategory">
+            <input type="text" value="{{mapplace.Category}}" name="newcategory">
+            <input type="submit" value="Update">
+        </form>
+        <form method="POST" action="./delete" style="display: inline">
+          <input type="hidden" value="{{mapplace.Category}}" name="category">
+          <input type="submit" value="Delete">
+        </form>
     {% endfor %}
     </ul>
 </div>
