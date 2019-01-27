@@ -1,14 +1,15 @@
 <!doctype html>
 <html>
 <head>
-  <title>Profile</title>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/profile boot.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="30">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/profile boot.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
   {% for message in get_flashed_messages() %}
@@ -17,19 +18,15 @@
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10" id='updateusername'><h1 id='uname'>{{ sesuser }}</h1></div>
+  		<div class="col-sm-10" id='updateusername'><h1 id='uname'>Hello {{ sesuser }} !</h1></div>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
 
 
-      <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a new photo</h6>
-          <form method="post" enctype="multipart/form-data">
-              <input type="file" class="text-center center-block file-upload" value="upload">
-          </form>
-      </div><hr><br>
+
+            <a href="/"><img id='home' src="/static/images/home.png"></a>
+      <hr><br>
 
         </div><!--/col-3-->
     	<div class="col-sm-9">
@@ -42,7 +39,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="profile">
                 <hr>
-                  <form class="form" action="" method="post" id="registrationForm">
+                  <form class="form" action="{{url_for('profile')}}" method="post" id="registrationForm">
                       <div class="form-group">
 
                           <div class="col-xs-6">
@@ -97,19 +94,19 @@
                <h2></h2>
 
                <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form class="form" action="{{url_for('profile')}}" method="post" id="registrationForm">
                       <div class="form-group">
 
                           <div class="col-xs-6">
                               <label for="password"><h4>New Password: </h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="enter new password" title="enter new password">
+                              <input type="password" class="form-control" name="newpassword" id="password" placeholder="enter new password" title="enter new password">
                           </div>
                       </div>
                       <div class="form-group">
 
                           <div class="col-xs-6">
                             <label for="password"><h4>Re-enter Password:</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="re-enter password" title="re-enter password">
+                              <input type="password" class="form-control" name="Re-enter Password" id="password" placeholder="re-enter password" title="re-enter password">
                           </div>
                       </div>
                       <div class="form-group">
@@ -130,25 +127,3 @@
         </div><!--/col-9-->
     </div><!--/row-->
 </body>
-<script>
-$(document).ready(function() {
-
-
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('.avatar').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
-});
-</script>
