@@ -11,18 +11,13 @@
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-    <div id='line1'></div>
-    <hr id='line2'>
-    <p id='big'>Total Calories Consumed Today</p><br>
+    <p id='big'>Total Calories Consumed Today:</p><br>
     <p id='calories'>{{ result }} Calories</p>
     <a href="/"><img id="home" src="/static/images/home.png" alt="home button"></a>
     <p id='column2'></p>
-    <p id='column3'>Total Calories</p>
-    <p id='column4'>{{store}} Cals</p>
     <img id='img1' src='/static/images/scales.png' alt="scale">
     <img id='img2' src='/static/images/scales.png' alt="scale">
     <img id='img3' src='/static/images/scales.png' alt="scale">
-
     <form action="" method="POST">
         <input name='calorie1' id="input1" placeholder="0" value="0">{{ form.calorie1 }}
         <input name='calorie2' id="input2" placeholder="0" value="0">{{ form.calorie2 }}
