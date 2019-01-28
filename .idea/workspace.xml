@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="597d3a9c-e352-45fb-a9f5-14e25df91ff6" name="Default Changelist" comment="Revert &quot;Deleting of repeated route&quot;">
-      <change afterPath="$PROJECT_DIR$/static/images/home16.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/login2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/login5.jpeg" afterDir="false" />
+    <list default="true" id="597d3a9c-e352-45fb-a9f5-14e25df91ff6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/Homepagee.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/Homepagee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/Homepagee.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/Homepagee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/signup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Homepagee.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Homepagee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
     </list>
     <list id="8cba14a9-a060-4d7f-a29a-89f1ccdba3e3" name="Deleting of repeated route" comment="" />
+    <ignored path=".idea/inspectionProfiles/Project_Default.xml" />
+    <ignored path=".idea/dataSources.xml" />
+    <ignored path="user.dat" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/3_1$Flask__Project_py_.coverage" NAME="Flask (Project.py) Coverage Results" MODIFIED="1548666237136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/3_1$Flask__Project_py_.coverage" NAME="Flask (Project.py) Coverage Results" MODIFIED="1548666553685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_1$3_1.coverage" NAME="3-1 Coverage Results" MODIFIED="1548132381774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/3_1$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1547426684102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -46,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="212" column="45" lean-forward="true" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
+            <state relative-caret-position="172">
+              <caret line="218" column="45" lean-forward="true" selection-start-line="218" selection-start-column="45" selection-end-line="218" selection-end-column="45" />
               <folding>
                 <element signature="e#0#117#0" expanded="true" />
               </folding>
@@ -58,11 +48,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/css/Homepagee.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="334" lean-forward="true" selection-start-line="334" selection-end-line="334" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/login.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="265" column="1" lean-forward="true" selection-start-line="265" selection-start-column="1" selection-end-line="265" selection-end-column="1" />
+            <state relative-caret-position="5035">
+              <caret line="265" column="1" selection-start-line="265" selection-start-column="1" selection-end-line="265" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -158,7 +157,6 @@
         <option value="$PROJECT_DIR$/templates/admin.html" />
         <option value="$PROJECT_DIR$/templates/Homepagee.html" />
         <option value="$PROJECT_DIR$/static/Homepagee.html" />
-        <option value="$PROJECT_DIR$/static/css/Homepagee.css" />
         <option value="$PROJECT_DIR$/static/css/signup.css" />
         <option value="$PROJECT_DIR$/static/signup.html" />
         <option value="$PROJECT_DIR$/templates/signup.html" />
@@ -166,6 +164,7 @@
         <option value="$PROJECT_DIR$/static/login.html" />
         <option value="$PROJECT_DIR$/static/css/login.css" />
         <option value="$PROJECT_DIR$/Project.py" />
+        <option value="$PROJECT_DIR$/static/css/Homepagee.css" />
       </list>
     </option>
   </component>
@@ -372,7 +371,8 @@
       <workItem from="1548569275913" duration="17280000" />
       <workItem from="1548596213317" duration="14402000" />
       <workItem from="1548649380863" duration="327000" />
-      <workItem from="1548666111018" duration="244000" />
+      <workItem from="1548666111018" duration="322000" />
+      <workItem from="1548666477872" duration="661000" />
     </task>
     <task id="LOCAL-00001" summary="Intergrate">
       <created>1547459503592</created>
@@ -381,11 +381,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547459503592</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Block Non-admin users">
+      <created>1548666403553</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548666403553</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110604000" />
+    <option name="totallyTimeSpent" value="111343000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -400,12 +407,12 @@
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.495283" visible="true" weight="0.21538462" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.495283" visible="true" weight="0.21862349" />
       <window_info id="Structure" order="1" sideWeight="0.504717" side_tool="true" weight="0.20080972" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.40412045" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.40412045" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39936608" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -468,7 +475,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Intergrate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Intergrate" />
+    <MESSAGE value="Block Non-admin users" />
+    <option name="LAST_COMMIT_MESSAGE" value="Block Non-admin users" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/static/js/validateForm.js">
@@ -688,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/Homepagee.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7326">
-          <caret line="333" lean-forward="true" selection-start-line="333" selection-end-line="333" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="605">
@@ -723,10 +724,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Project.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="218" column="45" lean-forward="true" selection-start-line="218" selection-start-column="45" selection-end-line="218" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/login.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="265" column="1" lean-forward="true" selection-start-line="265" selection-start-column="1" selection-end-line="265" selection-end-column="1" />
+        <state relative-caret-position="5035">
+          <caret line="265" column="1" selection-start-line="265" selection-start-column="1" selection-end-line="265" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -744,13 +755,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project.py">
+    <entry file="file://$PROJECT_DIR$/static/css/Homepagee.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="212" column="45" lean-forward="true" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#117#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="176">
+          <caret line="334" lean-forward="true" selection-start-line="334" selection-end-line="334" />
         </state>
       </provider>
     </entry>

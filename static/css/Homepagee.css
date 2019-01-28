@@ -20,6 +20,7 @@
     font-weight: 700;
     line-height: 26.4px;
     color: rgb(110, 86, 80);
+    text-decoration: none;
 }
 .dropbtn {
 	background-color: black;
@@ -103,6 +104,7 @@
     position: absolute;
     bottom: 200px;
     left: 20px;
+    text-decoration: none;
 }
 #special:hover{
    background-color: rgb(104, 81, 75);
@@ -155,6 +157,7 @@ body {
 	font-size: 24px;
 	transition: 3s;
 	color: #555;
+    text-decoration: none;
 }
 .navbar .navbar-nav{
 	list-style: none;
