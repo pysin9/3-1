@@ -133,7 +133,7 @@ def login():
                 return render_template('login.html', error=msg)
         else:
             if is_valid(username, password):
-                session[username] = username
+                session['username'] = username
                 return redirect(url_for('index'))
 
             else:
