@@ -1,10 +1,8 @@
-from flask import render_template, url_for, redirect, request, session, flash, redirect, url_for, send_from_directory
+from flask import render_template, request, session, flash, redirect, url_for
 from dbModel import *
 from Entity import MapPlace
 from form import *
 from calcount import *
-from werkzeug.utils import secure_filename
-import os
 import sqlite3
 import hashlib
 
@@ -17,7 +15,8 @@ app.config['SESSION_TYPE'] = 'filesystem'
 @app.route('/')
 def index():
     if 'username' in session:
-        return render_template('userprofile.html')
+        username = session['username']
+        return render_template('userprofile.html', username = username)
     else:
         return render_template('Homepagee.html')
 
