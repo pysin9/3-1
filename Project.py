@@ -1,10 +1,8 @@
-from flask import render_template, url_for, redirect, request, session, flash, redirect, url_for, send_from_directory
+from flask import render_template, request, session, flash, redirect, url_for
 from dbModel import *
 from Entity import MapPlace
 from form import *
 from calcount import *
-from werkzeug.utils import secure_filename
-import os
 import sqlite3
 import hashlib
 
@@ -17,7 +15,8 @@ app.config['SESSION_TYPE'] = 'filesystem'
 @app.route('/')
 def index():
     if 'username' in session:
-        return render_template('userprofile.html')
+        username = session['username']
+        return render_template('userprofile.html', username = username)
     else:
         return render_template('Homepagee.html')
 
@@ -75,9 +74,11 @@ def profile():
                     flash('Update Unsuccessful!')
 
             con.close()
-            bmi = float(sesweight) / (float(sesheight) * float(sesheight))
+
             return redirect(url_for('profile'))
     con.close()
+    bmi1 = float(sesweight) / (float(sesheight) * float(sesheight))
+    bmi = round(bmi1,2)
     return render_template('profile.html', bmi=bmi, form=form, sesuser=sesuser, sestown=sestown, sesheight=sesheight, sesweight = sesweight)
 
 
@@ -136,6 +137,7 @@ def login():
                 msg = 'Invalid UserId / Password'
                 return render_template('login.html', error=msg)
         else:
+            print(username , password)
             if is_valid(username, password):
                 session['username'] = username
                 return redirect(url_for('index'))
