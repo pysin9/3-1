@@ -15,7 +15,6 @@ app.config['SESSION_TYPE'] = 'filesystem'
 @app.route('/')
 def index():
     if 'username' in session:
-        username = session['username']
         return render_template('userprofile.html', username = username)
     else:
         return render_template('Homepagee.html')
@@ -100,9 +99,6 @@ def changepass():
     return render_template('profile.html')
 
 
-
-
-
 def is_valid(username, password: str):
     con = sqlite3.connect('users.db')
     cur = con.cursor()
@@ -125,7 +121,6 @@ def is_valid(username, password: str):
 
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
-
     if request.method == 'POST':
         username = request.form.get('username', False)
         password = request.form.get('password', False)
