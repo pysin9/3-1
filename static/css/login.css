@@ -282,3 +282,23 @@ label {
 .m-b-36 {
     margin-bottom: 9px;
 }
+.alert-success{
+    border: 3px solid;
+    position: absolute;
+    z-index: 99;
+    top: 92px;
+    width: 55%;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6
+}
+.alert.danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    border: 3px solid;
+    position: absolute;
+    z-index: 99;
+    top: 92px;
+    width: 55%;
+}
