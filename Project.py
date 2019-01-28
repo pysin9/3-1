@@ -249,7 +249,7 @@ def admin():
                 mapplace = MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
                 db.session.add(mapplace)
                 db.session.commit()
-                return redirect(url_for('index'))
+                return redirect(url_for('admin'))
     mapplaces = MapPlace.query.all()
     print(session)
     return render_template("admin.html" ,mapplaces=mapplaces)
