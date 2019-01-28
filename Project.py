@@ -97,13 +97,12 @@ def is_valid(username, password: str):
 
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
-
     if request.method == 'POST':
         username = request.form.get('username', False)
         password = request.form.get('password', False)
         if username == 'admin' and password == '123':
             if is_valid(username, password):
-                session[username] = username
+                session["admin"] = username
                 return redirect(url_for('admin'))
             else:
                 msg = 'Invalid UserId / Password'
@@ -212,10 +211,17 @@ if __name__ == "__main__":
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
-    if request.form:
-        mapplace=MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
-        db.session.add(mapplace)
-        db.session.commit()
+    if '/admin' in request.path:
+        print(session)
+        if  "admin" not in session:
+            print("not in session")
+            return redirect(url_for('index'))
+        elif "admin" in session :
+            if request.form:
+                mapplace = MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
+                db.session.add(mapplace)
+                db.session.commit()
+                return redirect(url_for('index'))
     mapplaces = MapPlace.query.all()
     print(session)
     return render_template("admin.html" ,mapplaces=mapplaces)
