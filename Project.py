@@ -126,7 +126,7 @@ def login():
         password = request.form.get('password', False)
         if username == 'admin' and password == '123':
             if is_valid(username, password):
-                session[username] = username
+                session['username'] = username
                 return redirect(url_for('admin'))
             else:
                 msg = 'Invalid UserId / Password'
