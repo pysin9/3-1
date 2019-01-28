@@ -1,22 +1,44 @@
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script type="text/javascript" src="/static/js/validateForm.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/signup.css"/>
 </head>
 <body>
-<form action="/register/" method="POST" onsubmit="return validate()">
-    <p>Username: <input type="text" name="email"></p>
-
-    <P>Password: <input type="password" name="password" id="password" required></p>
-
-    <p>Confirm Password: <input type="password" name="cpassword" id="cpassword"></p>
-
-    <p>Town: <input type="text" name="firstName"></p>
-    <p>Weight: <input type="text" name="lastName"></p>
-    <p>Height: <input type="text" name="address1"></p>
-
-    <p><input type="submit" value="Register"></p>
-
-    <a href="/login/">Login here</a>
-</form>
+     <div class="limiter">
+         <div class="container-login100">
+             <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form method="POST" class="login100-form" action="/register/" onsubmit="return validate()">
+                    <span class="login100-form-title p-b-32">
+						Join us now!
+					</span>
+                    <p class="txt1 p-b-11">Username:<br>
+                        <input class="wrap-input100 validate-input m-b-36 input100" type="text" name="username" required>
+                    </p>
+                    <p class="txt1 p-b-11">Password:<br>
+                        <input class="wrap-input100 validate-input m-b-36 input100" type="password" name="password" id="password"  required>
+                    </p>
+                    <p class="txt1 p-b-11">Confirm Password:<br>
+                        <input class="wrap-input100 validate-input m-b-36 input100" type="password" name="cpassword" name="password" required>
+                    </p>
+                     <p class="txt1 p-b-11">Town:<br>
+                         <input class="wrap-input100 validate-input m-b-36 input100" type="text" name="Town">
+                     </p>
+                    <p class="txt1 p-b-11">Weight:<br>
+                         <input class="wrap-input100 validate-input m-b-36 input100" type="text" name="weight">
+                     </p>
+                     <p class="txt1 p-b-11">Height:<br>
+                         <input class="wrap-input100 validate-input m-b-36 input100" type="text" name="height">
+                     </p>
+                    <p class="container-login100-form-btn">
+                        <input class="login100-form-btn" type="submit">
+                    </p>
+                    <p class="txt1">Already have an account?
+                        <a href="/login/">Login here!</a>
+                    </p>
+                </form>
+             </div>
+        </div>
+    </div>
 </body>
 </html>

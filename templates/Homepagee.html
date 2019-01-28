@@ -2,12 +2,11 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/static/css/Homepagee.css"/>
-    <title>Homepage</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makan</title>
+
 </head>
 
 <body>
-
      <nav class="navbar navbar-default navbar-expand-lg" >
             <div class="container">
               <div class="navbar-translate">
@@ -19,25 +18,27 @@
                   <span class="navbar-toggler-icon"></span>
                 </button>
               </div>
-              <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-				  <li class="nav-item">
-                    <a href="/login" class="nav-link">
-                      Login
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/register" class="nav-link" >
-                      Signup
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              {% if not loggedIn %}
+                <div id="signInButton">
+                    <a class="nav-link" href="/login/">Login</a>
+                    <a  class="nav-link" href="/register/">Register</a>
+                </div>
+	          {% else %}
+                  <div class="dropdown">
+                    <button class="dropbtn">Hello, <br>{{username}}</button>
+                    <div class="dropdown-content">
+                        <a href="/profile">Your profile</a>
+                        <hr>
+                        <a href="/logout">Sign Out</a>
+                    </div>
+                  </div>
+              {% endif %}
             </div>
      </nav>
      <div>
-         <img src = "/static/images/background.jpg" id = "food">
+         <img src = "/static/images/home16.jpeg" class= "food">
+         <div class="top-left">Makan</div>
          <a href="/map" id="special">Map</a>
-
      </div>
       </body>
+</html>

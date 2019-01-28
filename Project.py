@@ -97,6 +97,7 @@ def is_valid(username, password: str):
 
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
+
     if request.method == 'POST':
         username = request.form.get('username', False)
         password = request.form.get('password', False)

@@ -1,16 +1,34 @@
 <html>
 <head>
-    <title>Welcome to makan</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Makan </title>
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
 </head>
 <body>
-<p> {{error}} </p>
-<form action="/login/"  method="POST">
-	<p>Username: <input type="text" name="username"></p>
-	<p>Password: <input type="password" name="password"></p>
-	<p><input type="submit"></p>
-	<a href="/register/">Register here</a>
-</form>
-
+    <div class="limiter">
+         <div class="container-login100">
+             <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form method="POST" class="login100-form" action="/login/">
+                    <span class="login100-form-title p-b-32">
+						Account Login
+					</span>
+                    <p class="txt1 p-b-11">Username:<br>
+                        <input class="wrap-input100 validate-input m-b-36 input100" type="text" name="username" required>
+                    </p>
+                    <p class="txt1 p-b-11">Password:<br>
+                        <input class="wrap-input100 validate-input m-b-36 input100"type="password" name="password" required>
+                    </p>
+                    <p class="container-login100-form-btn">
+                        <input class="login100-form-btn" type="submit">
+                    </p>
+                    <p>Forgot your password?
+                        <a href="/reset">Reset Now!</a>
+                    </p>
+                    <p>Don't have an account?
+                        <a href="/register/">Register Now!</a>
+                    </p>
+                </form>
+             </div>
+        </div>
+    </div>
 </body>
 </html>
