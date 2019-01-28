@@ -15,50 +15,126 @@
     <title>Title</title>
 </head>
 <body>
-    <form method="POST" action="/admin">
-        <input type="text" name="Name" placeholder="Name"/>
-        <input type="text" name="Picture" placeholder="Link for the picture"/>
-        <input type="text" name="Color" placeholder="Color"/>
-        <input type="text" name="Longitude" placeholder="Longitude"/>
-        <input type="text" name="Latitude" placeholder="Latitude"/>
-        <input type="text" name="Location" placeholder="Location"/>
-        <input type="text" name="Category" placeholder="Category"/>
-        <input type="text" name="Postal_Code" placeholder="Postal_Code"/>
+    <form method="POST" onclick="/admin">
+        <input type="text" name="Name" placeholder="Name" required/>
+        <input type="text" name="Picture" placeholder="Link for the picture" required/>
+        <input type="text" name="Color" placeholder="Color" required/>
+        <input type="text" name="Longitude" placeholder="Longitude" required/>
+        <input type="text" name="Latitude" placeholder="Latitude" required/>
+        <input type="text" name="Location" placeholder="Location" required/>
+        <input type="text" name="Category" placeholder="Category" required/>
+        <input type="text" name="Postal_Code" placeholder="Postal_Code" required/>
         <input type="submit" value="Add"/>
     </form>
-<h1>Mapplace</h1>
-<div class="listing">
-    <ul>
-    {% for mapplace in mapplaces %}
-        <li>{{mapplace.Name}}</li>
-        <form method="POST" action="/update" style="display: inline">
-            <input type="hidden" value="{{mapplace.Name}}" name="oldname">
-            <input type="text" value="{{mapplace.Name}}" name="newname">
-            <input type="submit" value="Update">
-        </form>
-        <form method="POST" action="./delete" style="display: inline">
-          <input type="hidden" value="{{mapplace.Name}}" name="Name">
-          <input type="submit" value="Delete">
-        </form>
-    {% endfor %}
-    </ul>
-</div>
-
-<div class="listing">
-    <ul>
-    {% for mapplace in mapplaces %}
-        <li>{{mapplace.Category}}</li>
-        <form method="POST" action="/update" style="display: inline">
-            <input type="hidden" value="{{mapplace.Category}}" name="oldcategory">
-            <input type="text" value="{{mapplace.Category}}" name="newcategory">
-            <input type="submit" value="Update">
-        </form>
-        <form method="POST" action="./delete" style="display: inline">
-          <input type="hidden" value="{{mapplace.Category}}" name="category">
-          <input type="submit" value="Delete">
-        </form>
-    {% endfor %}
-    </ul>
-</div>
+    <h1>Mapplace</h1>
+    <div class="listing">
+    <p>Name</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Name}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Name}}" name="oldname">
+                <input type="text" value="{{mapplace.Name}}" name="newname">
+                <input type="submit" value="Update">
+            </form>
+            <form method="POST" action="/delete" style="display: inline">
+              <input type="hidden" value="{{mapplace.Name}}" name="name">
+              <input type="hidden" value="{{mapplace.Category}}" name="category">
+              <input type="submit" value="Delete">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>Link</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Picture}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Picture}}" name="oldpicture">
+                <input type="text" value="{{mapplace.Picture}}" name="newpicture">
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>Color</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Color}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Color}}" name="oldcolor">
+                <input type="text" value="{{mapplace.Color}}" name="newcolor">
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>Longitude</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Longitude}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Longitude}}" name="oldlong">
+                <input type="text" value="{{mapplace.Longitude}}" name="newlong>
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>Latitude</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Latitude}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Latitude}}" name="oldlat">
+                <input type="text" value="{{mapplace.Latitude}}" name="newlat">
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>Location</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Location}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Location}}" name="oldloc">
+                <input type="text" value="{{mapplace.Location}}" name="newloc">
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>Category</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Category}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Category}}" name="oldcategory">
+                <input type="text" value="{{mapplace.Category}}" name="newcategory">
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="listing">
+    <p>PostalCode</p>
+        <ul>
+        {% for mapplace in mapplaces %}
+            <li>{{mapplace.Postal_Code}}</li>
+            <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{mapplace.Postal_Code}}" name="oldcode">
+                <input type="text" value="{{mapplace.Postal_Code}}" name="newcode">
+                <input type="submit" value="Update">
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

@@ -1,7 +1,6 @@
 
 from Entity import *
 
-
 class MapPlace(db.Model):
     __tablename__ = 'MapPlace'
 
@@ -79,5 +78,3 @@ class MapPlace(db.Model):
 
     def get_postal_code(self):
         return self.Postal_Code
-
-

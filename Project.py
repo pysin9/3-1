@@ -9,7 +9,6 @@ import sqlite3
 import hashlib
 
 import simplejson as json
-from flask.ext.cache import Cache
 
 app = Flask(__name__)
 app.secret_key = 'secret secret'
@@ -18,7 +17,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 app.secret_key = 'Secret Secret'
 
 @app.route('/')
@@ -36,7 +34,6 @@ def ingredient():
 
 
 @app.route("/map" ,methods=['GET', 'POST'])
-@cache.cached(timeout=100)
 def map():
     data = MapPlace.query.all()
     return render_template('map.html', data=data)
@@ -87,22 +84,38 @@ def is_valid(username, password: str):
         return True
     return False
 
+# def check_for_admin(*args, **kw):
+#     username = request.form.get('username', False)
+#     print(username)
+#     password = request.form.get('password', False)
+#     print(password)
+#     if request.path.startswith('/admin'):
+#         if not is_valid(session[username == "admin"], session[password == "123"] ):
+#             return redirect(url_for('index'))
+#         elif is_valid(session[username == "admin"], session[password == "123"] ):
+#             return redirect(url_for('admin'))
 
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
+
     if request.method == 'POST':
         username = request.form.get('username', False)
         password = request.form.get('password', False)
-        if is_valid(username, password):
-            session['username'] = username
-            return redirect(url_for('index'))
-
-        elif is_valid(username="admin" , password="123"):
-            session['username'] = "admin"
-            return redirect(url_for('admin'))
+        if username == 'admin' and password == '123':
+            if is_valid(username, password):
+                session[username] = username
+                return redirect(url_for('admin'))
+            else:
+                msg = 'Invalid UserId / Password'
+                return render_template('login.html', error=msg)
         else:
-            msg = 'Invalid UserId / Password'
-            return render_template('login.html', error=msg)
+            if is_valid(username, password):
+                session[username] = username
+                return redirect(url_for('index'))
+
+            else:
+                msg = 'Invalid UserId / Password'
+                return render_template('login.html', error=msg)
     return render_template("login.html")
 
 
@@ -196,17 +209,15 @@ if __name__ == "__main__":
     app.config['SESSION_TYPE'] = 'filesystem'
     app.run(host='0.0.0.0')
 
+
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
-    if request.form :
-        try:
-            mapplace=MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
-            db.session.add(mapplace)
-            db.session.commit()
-        except Exception as e:
-            print("Failed to add ")
-            print(e)
+    if request.form:
+        mapplace=MapPlace(Name=request.form.get("Name"),Picture=request.form.get("Picture"),Color=request.form.get("Color"),Longitude=request.form.get("Longitude"),Latitude=request.form.get("Latitude"),Location=request.form.get("Location"),Category=request.form.get("Category"),Postal_Code=request.form.get("Postal_Code"))
+        db.session.add(mapplace)
+        db.session.commit()
     mapplaces = MapPlace.query.all()
+    print(session)
     return render_template("admin.html" ,mapplaces=mapplaces)
 
 @app.route("/update", methods=["POST"])
@@ -214,43 +225,79 @@ def update():
     try:
         newname = request.form.get("newname")
         oldname = request.form.get("oldname")
+
+        newpic = request.form.get("newpicture")
+        oldpic = request.form.get("oldpicture")
+
+        newcolor = request.form.get("newcolor")
+        oldcolor = request.form.get("oldcolor")
+
+        newlong = request.form.get("newlong")
+        oldlong = request.form.get("oldlong")
+
+        newlat = request.form.get("newlat")
+        oldlat = request.form.get("oldlat")
+
+        newloca = request.form.get("newname")
+        oldloca = request.form.get("oldname")
+
         newcategory = request.form.get("newcategory")
         oldcategory = request.form.get("oldcategory")
+
+        newcode = request.form.get("newname")
+        oldcode = request.form.get("oldname")
         if oldname != newname:
             print("The old name {} and new name {}".format(oldname, newname))
             mapplace = MapPlace.query.filter_by(Name=oldname).first()
             mapplace.Name = newname
             db.session.commit()
+        elif oldpic != newpic:
+            mapplace = MapPlace.query.filter_by(Picture=oldpic).first()
+            mapplace.Picture = newpic
+            db.session.commit()
+        elif oldcolor != newcolor:
+            mapplace = MapPlace.query.filter_by(Color=oldcolor).first()
+            mapplace.Color = newpic
+            db.session.commit()
+        elif oldlong != newlong:
+            mapplace = MapPlace.query.filter_by(Longitude=oldlong).first()
+            mapplace.Longitude = newlong
+            db.session.commit()
+        elif oldlat != newlat:
+            mapplace = MapPlace.query.filter_by(Latitude=oldlat).first()
+            mapplace.Latitude = newlat
+            db.session.commit()
+        elif oldloca != newloca:
+            mapplace = MapPlace.query.filter_by(Location=oldloca).first()
+            mapplace.Location = newloca
+            db.session.commit()
         elif oldcategory != newcategory:
             mapplace = MapPlace.query.filter_by(Category=oldcategory).first()
             mapplace.Category = newcategory
             db.session.commit()
+        elif oldcode != newcode:
+            mapplace = MapPlace.query.filter_by(Postal_Code=oldcode).first()
+            mapplace.Postal_Code = newcode
+            db.session.commit()
     except Exception as e:
         print("Couldn't update")
         print(e)
-    return redirect("/admin" )
+    return redirect(url_for("admin"))
 
 @app.route("/delete", methods=["POST"])
 def delete():
-    name = request.form.get("Name")
+    name = request.form.get("name")
     category = request.form.get("Category")
-    if name == name :
-        mapplace = MapPlace.query.filter_by(Name=name).first()
-        # mapplace1 = MapPlace.query.filter_by(Category=category).first()
-        db.session.delete(mapplace)
-        # db.session.delete(mapplace1)
-        db.session.commit()
-    elif  category == category:
-        category = request.form.get("Category")
-        mapplace1 = MapPlace.query.filter_by(Category=category).first()
-        db.session.delete(mapplace1)
-    return redirect("/admin")
+    mapplace = MapPlace.query.filter_by(Name=name).first() or MapPlace.query.filter_by(Category=category).first()
+    db.session.delete(mapplace)
+    db.session.commit()
+    return redirect(url_for("admin"))
 
-
-# def delete1():
+# @app.route("/deletecategory", methods=["POST"])
+# def deletecategory():
 #     category = request.form.get("Category")
-#     mapplace1 = MapPlace.query.filter_by(Category=category).first()
-#     db.session.delete(mapplace1)
+#     mapplace = MapPlace.query.filter_by(Category=category).first()
+#     db.session.delete(mapplace)
 #     db.session.commit()
 #     return redirect("/admin")
 

@@ -2,7 +2,6 @@ from flask import Flask
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.hybrid import hybrid_property
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
@@ -48,6 +47,7 @@ class MapPlace(db.Model):
     Location = db.Column(db.String(2083))
     Category = db.Column(db.String(64))
     Postal_Code = db.Column(db.String(32))
+
 
 
 if __name__ == '__main__':
