@@ -12,12 +12,7 @@ import simplejson as json
 
 app = Flask(__name__)
 app.secret_key = 'secret secret'
-UPLOAD_FOLDER = '/static/images/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-app.secret_key = 'Secret Secret'
 
 @app.route('/')
 def index():
@@ -41,38 +36,70 @@ def map():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    bmi = 0
-    form = UpdateProfile(request.form)
+    with sqlite3.connect('users.db') as con:
+        cur = con.cursor()
+        cur.execute('SELECT town FROM users WHERE username = ?', (session['username'],))
+        fetchtown = cur.fetchone()
+        sestown = fetchtown[0]
+
+        cur.execute('SELECT height FROM users WHERE username = ?', (session['username'],))
+        fetchheight = cur.fetchone()
+        sesheight = fetchheight[0]
+
+        cur.execute('SELECT weight FROM users WHERE username = ?', (session['username'],))
+        fetchweight = cur.fetchone()
+        sesweight = fetchweight[0]
+
+
+        sesuser = session['username']
+
+        bmi = 0
+        form = UpdateProfile(request.form)
+        if request.method == 'POST':
+            username = request.form['username']
+            town = request.form['town']
+            weight = request.form['weight']
+            height = request.form['height']
+            with sqlite3.connect('users.db') as con:
+                try:
+                    cur = con.cursor()
+                    cur.execute('UPDATE users SET username=?, town=?, weight=?, height=? WHERE username=?', (username, town, weight, height, session['username']))
+                    con.commit()
+                    flash('Updated Successfully!')
+                    session['username'] = username
+                    session['town'] = town
+                    session['weight'] = weight
+                    session['height'] = height
+                except:
+                    con.rollback()
+                    flash('Update Unsuccessful!')
+
+            con.close()
+            bmi = float(sesweight) / (float(sesheight) * float(sesheight))
+            return redirect(url_for('profile'))
+    con.close()
+    return render_template('profile.html', bmi=bmi, form=form, sesuser=sesuser, sestown=sestown, sesheight=sesheight, sesweight = sesweight)
+
+
+def changepass():
+    form = Password(request.form)
     if request.method == 'POST':
-        bmi = float(request.form['weight'])/(float(request.form['weight'])*float(request.form['weight']))
-    return render_template('profile.html', bmi=bmi, form=form)
+        password = request.form['newpassword']
+        with sqlite3.connect('users.db') as con:
+            try:
+                cur = con.cursor()
+                cur.execute('UPDATE users SET password=? WHERE username=?', (hashlib.sha256(password.encode()).hexdigest(), session['username']))
+                con.commit()
+                flash('Updated Successfully!')
+            except:
+                con.rollback()
+                flash('Update Unsuccessful!')
+        con.close()
+        return redirect(url_for('profile'))
+    return render_template('profile.html')
 
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
-def upload_file():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
 
 
 def is_valid(username, password: str):
@@ -110,7 +137,7 @@ def login():
                 return render_template('login.html', error=msg)
         else:
             if is_valid(username, password):
-                session[username] = username
+                session['username'] = username
                 return redirect(url_for('index'))
 
             else:
@@ -131,7 +158,7 @@ def register():
             try:
                 cur = con.cursor()
                 cur.execute(
-                    'INSERT INTO users (username, password, town, weight, height) VALUES (?, ?, ?, ?, ?)',
+                    'INSERT INTO users (username,password,town,weight,height) VALUES (?, ?, ?, ?, ?)',
                     (username, hashlib.sha256(password.encode()).hexdigest(), town, weight, height))
                 con.commit()
 
