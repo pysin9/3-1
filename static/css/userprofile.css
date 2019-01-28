@@ -86,6 +86,7 @@ body {
 	font-size: 25px;
 	transition: 3s;
 	color: #555;
+    text-decoration: none;
 }
 .navbar .navbar-nav{
 	list-style: none;

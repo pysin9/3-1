@@ -100,9 +100,6 @@ def changepass():
     return render_template('profile.html')
 
 
-
-
-
 def is_valid(username, password: str):
     con = sqlite3.connect('users.db')
     cur = con.cursor()
@@ -125,7 +122,6 @@ def is_valid(username, password: str):
 
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
-
     if request.method == 'POST':
         username = request.form.get('username', False)
         password = request.form.get('password', False)
@@ -137,11 +133,10 @@ def login():
                 msg = 'Invalid UserId / Password'
                 return render_template('login.html', error=msg)
         else:
-            print(username , password)
+            print(session)
             if is_valid(username, password):
                 session['username'] = username
                 return redirect(url_for('index'))
-
             else:
                 msg = 'Invalid UserId / Password'
                 return render_template('login.html', error=msg)
@@ -216,8 +211,12 @@ def reset():
 
 @app.route("/logout")
 def logout():
-    session.pop('username', None)
-    return redirect(url_for('index'))
+    if "admin" in session:
+        session.pop('admin', None)
+        return redirect(url_for('index'))
+    else:
+        session.pop('username', None)
+        return redirect(url_for('index'))
 
 
 @app.route('/calcount', methods=['GET', 'POST'])
