@@ -75,9 +75,11 @@ def profile():
                     flash('Update Unsuccessful!')
 
             con.close()
-            bmi = float(sesweight) / (float(sesheight) * float(sesheight))
+
             return redirect(url_for('profile'))
     con.close()
+    bmi1 = float(sesweight) / (float(sesheight) * float(sesheight))
+    bmi = round(bmi1,2)
     return render_template('profile.html', bmi=bmi, form=form, sesuser=sesuser, sestown=sestown, sesheight=sesheight, sesweight = sesweight)
 
 
