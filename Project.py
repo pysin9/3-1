@@ -37,7 +37,7 @@ def map():
 def profile():
     with sqlite3.connect('users.db') as con:
         cur = con.cursor()
-        cur.execute('SELECT town FROM users WHERE username = ?', (session['username'],))
+        cur.execute('SELECT Town FROM users WHERE username = ?', (session['username'],))
         fetchtown = cur.fetchone()
         sestown = fetchtown[0]
 
@@ -148,7 +148,7 @@ def register():
     if request.method == 'POST':
         username = request.form.get('username', False)
         password = request.form.get('password', False)
-        town = request.form.get('town', False)
+        town = request.form.get('Town', False)
         weight = request.form.get('weight', False)
         height = request.form.get('height', False)
         with sqlite3.connect('users.db') as con:
