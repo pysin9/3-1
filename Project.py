@@ -106,7 +106,7 @@ def is_valid(username, password: str):
     cur.execute('SELECT password FROM users WHERE username = ?', (username,))
     data = cur.fetchone()
     if hashlib.sha256(password.encode()).hexdigest() == data[0]:
-        return True
+            return True
     return False
 
 # def check_for_admin(*args, **kw):
