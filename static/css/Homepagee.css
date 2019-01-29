@@ -9,19 +9,7 @@
     visibility: inherit;
     z-index: 20;
 }
-.top-left {
-    font-family: Lato;
-    position: absolute;
-    bottom: 300px;
-    left: 20px;
-    font-size: 56px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 700;
-    line-height: 26.4px;
-    color: rgb(110, 86, 80);
-    text-decoration: none;
-}
+
 .dropbtn {
 	background-color: black;
 	color: white;
@@ -104,7 +92,6 @@
     position: absolute;
     bottom: 200px;
     left: 20px;
-    text-decoration: none;
 }
 #special:hover{
    background-color: rgb(104, 81, 75);
@@ -135,13 +122,12 @@ body {
   box-sizing: border-box;
 }
 .navbar {
-    border: 0;
-    border-radius: 3px;
-    padding: 0.625rem 0;
-    margin-bottom: 20px;
-    color: #555;
-    background-color: #fff;
-    box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
+  border: 0;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  color: #555;
+  background-color: #fff !important;
+  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
 }
 .navbar>.container{
   display: flex;
@@ -157,13 +143,13 @@ body {
     margin-left: auto;
     max-width: 1386px
 }
+
 .navbar .navbar-brand {
 	padding: 22px 20px;
 	height: 80px;
 	font-size: 25px;
 	transition: 3s;
 	color: #555;
-    text-decoration: none;
 }
 .navbar .navbar-nav{
 	list-style: none;
@@ -227,7 +213,15 @@ body {
   margin-bottom: 0;
   list-style: none;
 }
-
+.navbar {
+    border: 0;
+    border-radius: 3px;
+    padding: 0.625rem 0;
+    margin-bottom: 20px;
+    color: #555;
+    background-color: #fff;
+    box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
+}
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
@@ -303,15 +297,7 @@ body {
     padding-right: 15px;
     padding-left: 15px;
 }
-h1{
-	margin-bottom: 1rem;
-	color: #3C4858;
-    text-decoration: none;
-	font-weight: 700;
-    font-family: "Roboto Slab", "Times New Roman", sans-serif, "Helvetica";
-    font-size: 2.25rem;
-    line-height: 1.5em;
-}
+
 
 .description {
     color: #999;
@@ -338,6 +324,61 @@ h1{
     padding-left: 15px;
 	color: #999;
 }
-
-
-
+.ice{
+    z-index: 6;
+    white-space: nowrap;
+    font-size: 23px;
+    line-height: 28px;
+    font-weight: 200;
+    color: rgb(110, 86, 80);
+    font-family: Lato;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 1px;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    opacity: 1;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform-origin: 50% 50% 0px;
+    position: absolute;
+    bottom: 300px;
+    left: 20px;
+}
+.top-left {
+    font-family: Lato;
+    position: absolute;
+    bottom: 358px;
+    left: 20px;
+    font-size: 56px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 26.4px;
+    color: rgb(110, 86, 80);
+}
+.waffle{
+    z-index: 7;
+    white-space: normal;
+    font-size: 21px;
+    line-height: 23px;
+    font-weight: 600;
+    color: rgb(110, 86, 80);
+    font-family: "Roboto Slab";
+    letter-spacing: 0px;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    opacity: 1;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform-origin: 50% 50% 0px;
+    position: absolute;
+    bottom: 266px;
+    left: 20px;
+}
